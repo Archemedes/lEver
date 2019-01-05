@@ -3,7 +3,7 @@ package co.lotc.lever;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryInteractEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 
@@ -16,7 +16,7 @@ import net.lordofthecraft.arche.util.WeakBlock;
 public class LeverListener implements Listener {
 
   @EventHandler
-  public void onInvclick(final InventoryClickEvent e) {
+  public void onInvclick(final InventoryInteractEvent e) {
       if (e.getInventory().getHolder() instanceof StaticInventory) {
           e.getInventory().getViewers().get(0).closeInventory();
           e.setCancelled(true);
