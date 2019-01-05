@@ -11,6 +11,7 @@ import co.lotc.lever.Lever.StaticInventory;
 import co.lotc.lever.cmd.Back;
 import co.lotc.lever.cmd.InvSearch;
 import lombok.var;
+import net.lordofthecraft.arche.util.Run;
 import net.lordofthecraft.arche.util.WeakBlock;
 
 public class LeverListener implements Listener {
@@ -18,7 +19,7 @@ public class LeverListener implements Listener {
   @EventHandler
   public void onInvclick(final InventoryInteractEvent e) {
       if (e.getInventory().getHolder() instanceof StaticInventory) {
-          e.getInventory().getViewers().get(0).closeInventory();
+          Run.as(Lever.get()).sync(()->e.getInventory().getViewers().get(0).closeInventory());
           e.setCancelled(true);
       }
   }
