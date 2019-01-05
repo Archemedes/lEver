@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>lever</artifactId>
+    <groupId>co.lotc</groupId>
+    <version>0.1</version>
+    
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.bukkitVersion>1.12.2-R0.1-SNAPSHOT</project.bukkitVersion>
+    </properties>
+
+    <distributionManagement>
+        <repository>
+            <id>lotc-release</id>
+            <url>https://repo.lordofthecraft.net/artifactory/lotc-releases/</url>
+        </repository>
+    </distributionManagement>
+
+    <!-- Repositories -->
+    <repositories>
+        <!-- Spigot/Bukkit -->
+        <repository>
+            <id>spigot-repo</id>
+            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+        </repository>
+        <!-- ProtocolLib -->
+        <repository>
+            <id>dmulloy2-repo</id>
+            <url>http://repo.dmulloy2.net/content/groups/public</url>
+        </repository>
+        <!-- LoTC Plugins -->
+        <repository>
+            <id>lotc-release</id>
+            <url>https://repo.lordofthecraft.net/artifactory/lotc-releases/</url>
+        </repository>
+    </repositories>
+
+    <!-- Dependencies -->
+    <dependencies>
+        <!--Spigot API-->
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>${project.bukkitVersion}</version>
+            <scope>provided</scope>
+        </dependency>
+	<!--ProtocolLib-->
+        <dependency>
+            <groupId>com.comphenix.protocol</groupId>
+            <artifactId>ProtocolLib-API</artifactId>
+            <version>4.4.0</version>
+        </dependency>
+	<!--CustomItem-->
+	<dependency>
+		<groupId>io.github.archemedes</groupId>
+		<artifactId>customitem</artifactId>
+		<version>2.2</version>
+		<scope>provided</scope>
+	</dependency>
+	<!--ArcheCore-->
+	<dependency>
+		<groupId>net.lordofthecraft.arche</groupId>
+		<artifactId>ArcheCore</artifactId>
+		<version>3.0</version>
+	</dependency>
+	<!--Lombok-->
+	<dependency>
+		<groupId>org.projectlombok</groupId>
+		<artifactId>lombok</artifactId>
+		<version>1.18.4</version>
+		<scope>provided</scope>
+	</dependency>
+    </dependencies>
+        
+    <build>
+        <defaultGoal>clean package install</defaultGoal>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <finalName>${project.name}</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/*.yml</include>
+                </includes>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

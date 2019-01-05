@@ -1,0 +1,27 @@
+name: lEver
+main: co.lotc.lever.Lever
+version: ${project.version}
+author: Sporadic
+depend: [ArcheCore, CustomItem]
+api-version: 1.13
+
+commands:
+  warp:
+    description: Teleport to a pre-defined location
+    permission: lever.warp
+  invsearch:
+    description: Request to search another player's inventory
+    permission: lever.invsearch
+  roll:
+    description: Roll an amount of dice
+    permission: lever.roll
+  item:
+    description: Spawn an item
+    permission: lever.item
+    aliases: [i]
+  vanish:
+    description: Spectator mode toggle command
+    permission: lever.vanish
+  back:
+    description: Return from the last registered teleportation
+    permission: lever.back
