@@ -4,12 +4,14 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryInteractEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 
 import co.lotc.lever.Lever.StaticInventory;
 import co.lotc.lever.cmd.Back;
 import co.lotc.lever.cmd.InvSearch;
+import co.lotc.lever.cmd.ViewDistance;
 import lombok.var;
 import net.lordofthecraft.arche.util.Run;
 import net.lordofthecraft.arche.util.WeakBlock;
@@ -35,6 +37,11 @@ public class LeverListener implements Listener {
   	var wb = new WeakBlock(e.getFrom());
   	
   	Back.BACKS.put(u, wb);
+  }
+  
+  @EventHandler
+  void onJoin(PlayerJoinEvent event) {
+      event.getPlayer().setViewDistance(ViewDistance.viewDistance);
   }
 
 }

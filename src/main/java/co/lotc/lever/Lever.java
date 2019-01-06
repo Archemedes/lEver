@@ -15,6 +15,7 @@ import co.lotc.lever.cmd.InvSearch;
 import co.lotc.lever.cmd.Item;
 import co.lotc.lever.cmd.Roll;
 import co.lotc.lever.cmd.Vanish;
+import co.lotc.lever.cmd.ViewDistance;
 import co.lotc.lever.cmd.WarpCommand;
 import lombok.Getter;
 import lombok.var;
@@ -47,6 +48,7 @@ public class Lever extends JavaPlugin {
 		command("changematerial", ChangeMaterial::new);
 		command("vanish", Vanish::new);
 		command("back", Back::new);
+		command("viewdistance", ViewDistance::new);
 	}
 	
 	private void listeners() {

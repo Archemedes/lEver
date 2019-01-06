@@ -28,3 +28,6 @@ commands:
   back:
     description: Return from the last registered teleportation
     permission: lever.back
+  viewdistance:
+    description: Manipulate radius of chunks loaded around players
+    permission: lever.viewdistance
