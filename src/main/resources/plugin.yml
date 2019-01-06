@@ -15,10 +15,13 @@ commands:
   roll:
     description: Roll an amount of dice
     permission: lever.roll
-  item:
+  i:
     description: Spawn an item
     permission: lever.item
-    aliases: [i]
+    aliases: [item]
+  changematerial:
+    description: Change the material of an item
+    permission: lever.item
   vanish:
     description: Spectator mode toggle command
     permission: lever.vanish
