@@ -11,6 +11,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import co.lotc.lever.cmd.Back;
 import co.lotc.lever.cmd.ChangeMaterial;
+import co.lotc.lever.cmd.Fly;
 import co.lotc.lever.cmd.InvSearch;
 import co.lotc.lever.cmd.Item;
 import co.lotc.lever.cmd.Roll;
@@ -49,6 +50,7 @@ public class Lever extends JavaPlugin {
 		command("vanish", Vanish::new);
 		command("back", Back::new);
 		command("viewdistance", ViewDistance::new);
+		command("fly", Fly::new);
 	}
 	
 	private void listeners() {

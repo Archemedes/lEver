@@ -15,6 +15,9 @@ commands:
   roll:
     description: Roll an amount of dice
     permission: lever.roll
+  fly:
+    description: toggle flight
+    permission: lever.fly
   i:
     description: Spawn an item
     permission: lever.item
