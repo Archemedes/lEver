@@ -4,8 +4,8 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import co.lotc.core.bukkit.util.ItemUtil;
 import co.lotc.lever.BaseCommand;
-import net.lordofthecraft.arche.util.ItemUtil;
 
 public class ChangeMaterial extends BaseCommand{
 	

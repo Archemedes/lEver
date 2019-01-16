@@ -9,11 +9,11 @@ import org.bukkit.Bukkit;
 
 import com.google.common.primitives.Ints;
 
+import co.lotc.core.bukkit.util.LocationUtil;
 import co.lotc.lever.BaseCommand;
 import net.lordofthecraft.arche.command.annotate.Arg;
 import net.lordofthecraft.arche.command.annotate.Default;
 import net.lordofthecraft.arche.interfaces.Persona;
-import net.lordofthecraft.arche.util.LocationUtil;
 
 public class Roll extends BaseCommand {
 	private static final int BROADCAST_RADIUS = 24;

@@ -6,8 +6,8 @@ import java.util.UUID;
 
 import org.bukkit.entity.Player;
 
+import co.lotc.core.bukkit.util.WeakBlock;
 import co.lotc.lever.BaseCommand;
-import net.lordofthecraft.arche.util.WeakBlock;
 
 public class Back extends BaseCommand{
 	public static final Map<UUID, WeakBlock> BACKS = new HashMap<>();

@@ -3,10 +3,10 @@ package co.lotc.lever;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
+import co.lotc.core.bukkit.util.WeakBlock;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import net.lordofthecraft.arche.util.WeakBlock;
 
 @EqualsAndHashCode
 @RequiredArgsConstructor

@@ -8,13 +8,13 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 
+import co.lotc.core.bukkit.util.Run;
+import co.lotc.core.bukkit.util.WeakBlock;
 import co.lotc.lever.Lever.StaticInventory;
 import co.lotc.lever.cmd.Back;
 import co.lotc.lever.cmd.InvSearch;
 import co.lotc.lever.cmd.ViewDistance;
 import lombok.var;
-import net.lordofthecraft.arche.util.Run;
-import net.lordofthecraft.arche.util.WeakBlock;
 
 public class LeverListener implements Listener {
 
