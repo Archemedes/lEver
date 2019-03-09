@@ -71,6 +71,11 @@
 		<version>1.18.4</version>
 		<scope>provided</scope>
 	</dependency>
+	<dependency>
+		<groupId>net.lordofthecraft</groupId>
+		<artifactId>OmniscienceAPI</artifactId>
+		<version>1.0.2</version>
+	</dependency>
     </dependencies>
         
     <build>

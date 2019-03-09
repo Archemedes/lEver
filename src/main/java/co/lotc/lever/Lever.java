@@ -10,7 +10,19 @@ import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import co.lotc.core.bukkit.util.WeakBlock;
-import co.lotc.lever.cmd.*;
+import co.lotc.lever.cmd.Back;
+import co.lotc.lever.cmd.ChangeMaterial;
+import co.lotc.lever.cmd.Fly;
+import co.lotc.lever.cmd.HorseStats;
+import co.lotc.lever.cmd.InvSearch;
+import co.lotc.lever.cmd.Item;
+import co.lotc.lever.cmd.MobProximity;
+import co.lotc.lever.cmd.Roll;
+import co.lotc.lever.cmd.ShowItem;
+import co.lotc.lever.cmd.Trash;
+import co.lotc.lever.cmd.Vanish;
+import co.lotc.lever.cmd.ViewDistance;
+import co.lotc.lever.cmd.WarpCommand;
 import lombok.Getter;
 import lombok.var;
 import net.lordofthecraft.arche.ArcheCore;
@@ -31,6 +43,7 @@ public class Lever extends JavaPlugin {
 	@Override
 	public void onEnable(){
 		sql();
+		omni();
 		warpManager.init();
 		listeners();
 		
@@ -53,6 +66,12 @@ public class Lever extends JavaPlugin {
 		Bukkit.getPluginManager().registerEvents(new LeverListener(), this);
 	}
 
+	private void omni() {
+		if(Bukkit.getPluginManager().isPluginEnabled("Omniscience")) {
+			OmniUtil.init();
+		}
+	}
+	
 	private void sql() {
 		var sql = ArcheCore.getSQLControls();
 		try(var c = sql.getConnection(); var s = c.createStatement()){

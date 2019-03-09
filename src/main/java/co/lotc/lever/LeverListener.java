@@ -3,6 +3,7 @@ package co.lotc.lever;
 import java.util.Objects;
 import java.util.stream.Stream;
 
+import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -51,13 +52,15 @@ public class LeverListener implements Listener {
   
   @EventHandler
   public void onInvClose(InventoryCloseEvent e) {
+  	if(!Bukkit.getPluginManager().isPluginEnabled("Omniscience"))
+  		return;
+  	
   	var i = e.getInventory();
   	if(i.getHolder() instanceof Trash.TrashCan) {
+  		
   		Stream.of(i.getContents())
   		.filter(Objects::nonNull)
-  		.forEach(is->{
-  			//TODO log
-  		});
+  		.forEach(is->OmniUtil.logItem(e.getPlayer(), is));
   	}
   }
 
