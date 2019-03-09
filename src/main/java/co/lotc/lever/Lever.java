@@ -13,6 +13,7 @@ import co.lotc.core.bukkit.util.WeakBlock;
 import co.lotc.lever.cmd.Back;
 import co.lotc.lever.cmd.ChangeMaterial;
 import co.lotc.lever.cmd.Fly;
+import co.lotc.lever.cmd.HorseSpeed;
 import co.lotc.lever.cmd.InvSearch;
 import co.lotc.lever.cmd.Item;
 import co.lotc.lever.cmd.MobProximity;
@@ -53,6 +54,7 @@ public class Lever extends JavaPlugin {
 		command("viewdistance", ViewDistance::new);
 		command("fly", Fly::new);
 		command("mobproximity", MobProximity::new);
+		command("horsespeed", HorseSpeed::new);
 	}
 	
 	private void listeners() {

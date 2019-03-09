@@ -38,3 +38,6 @@ commands:
   mobproximity:
     description: Checks for proximity of mobs
     permission: lever.mobproximity
+  horsespeed:
+    description: Check speed of the horse you are riding
+    permission: lever.horsespeed
