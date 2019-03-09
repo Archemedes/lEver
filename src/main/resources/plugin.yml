@@ -28,6 +28,7 @@ commands:
   vanish:
     description: Spectator mode toggle command
     permission: lever.vanish
+    aliases: [v]
   back:
     description: Return from the last registered teleportation
     permission: lever.back
