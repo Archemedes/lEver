@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 
 import net.lordofthecraft.arche.command.CommandTemplate;
 
-public class HorseSpeed extends CommandTemplate {
+public class HorseStats extends CommandTemplate {
 	
 	
 	public void invoke(Player p) {
@@ -20,7 +20,7 @@ public class HorseSpeed extends CommandTemplate {
 		
 		msg(YELLOW + "The horse you are riding has the following stats:");
 		msg(GRAY + "  Speed: " + GREEN + String.format("%.2f m/s", getHorseSpeed(horse)));
-		msg(GRAY + "  Jump Strength: " + String.format("%.2f blocks", getHorseJump(horse)));
+		msg(GRAY + "  Jump Strength: " + GREEN + String.format("%.2f blocks", getHorseJump(horse)));
 	}
 	
 	private double getHorseSpeed(AbstractHorse entity) {

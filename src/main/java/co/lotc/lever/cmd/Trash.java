@@ -13,7 +13,7 @@ import net.lordofthecraft.arche.command.CommandTemplate;
 public class Trash extends CommandTemplate {
 
 	public static class TrashCan implements InventoryHolder{
-		@Getter private final Inventory inventory = Bukkit.createInventory(this, 36, RED +""+BOLD+ "Items placed are destroyed!!");
+		@Getter private final Inventory inventory = Bukkit.createInventory(this, 36, RED +""+ BOLD + "Items are destroyed!!");
 	}
 	
 	public void invoke(Player p) {
