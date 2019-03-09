@@ -20,7 +20,7 @@ public class OmniUtil {
 		wrapper.set(DataKeys.TARGET, is.getType());
 		wrapper.set(DataKeys.QUANTITY, is.getAmount());
 		wrapper.set(DataKeys.DISPLAY_METHOD, "item");
-		OEntry.create().player(player).customWithLocation("trash", wrapper, player.getLocation());
+		OEntry.create().player(player).customWithLocation("trash", wrapper, player.getLocation()).save();
 	}
 
 }
