@@ -44,3 +44,6 @@ commands:
   trash:
     description: open an inventory to dispose of unwanted items
     permission: lever.trash
+  showitem:
+    description: show item in hand to player
+    permission: lever.showitem

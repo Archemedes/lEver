@@ -46,6 +46,7 @@ public class Lever extends JavaPlugin {
 		command("mobproximity", MobProximity::new);
 		command("horsestats", HorseStats::new);
 		command("trash", Trash::new);
+		command("showitem", ShowItem::new);
 	}
 	
 	private void listeners() {
