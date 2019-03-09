@@ -57,7 +57,6 @@ public class LeverListener implements Listener {
   	
   	var i = e.getInventory();
   	if(i.getHolder() instanceof Trash.TrashCan) {
-  		
   		Stream.of(i.getContents())
   		.filter(Objects::nonNull)
   		.forEach(is->OmniUtil.logItem(e.getPlayer(), is));
