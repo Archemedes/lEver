@@ -8,7 +8,7 @@
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.bukkitVersion>1.12.2-R0.1-SNAPSHOT</project.bukkitVersion>
+        <project.bukkitVersion>1.13.1-R0.1-SNAPSHOT</project.bukkitVersion>
     </properties>
 
     <distributionManagement>
