@@ -12,6 +12,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 
+import co.lotc.core.bukkit.util.ChatBuilder;
 import co.lotc.core.bukkit.util.LocationUtil;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -60,7 +61,20 @@ public class MobProximity extends CommandTemplate {
 
 		String tp = type.toString();
 		if (mobs.size() > 0) {
-			for (MobPack mp : mobs) msg("  " + DARK_AQUA + tp + GRAY + ": " + RED + mp.num + GRAY + " found at " + RED + mp.loc.getBlockX() + ", " + mp.loc.getBlockY() + ", " + mp.loc.getBlockZ());
+			for (MobPack mp : mobs) {
+				int x = mp.loc.getBlockX();
+				int y = mp.loc.getBlockY();
+				int z = mp.loc.getBlockZ();
+				new ChatBuilder("  ").command(String.format("/tp %d %d %d",x,y,z))
+					.append(tp).color(DARK_AQUA)
+					.append(": ").color(GRAY)
+					.append(mp.num).color(RED)
+					.append(" found at ").color(GRAY)
+					.append(x).color(RED)
+					.append(',').append(y)
+					.append(',').append(z)
+					.send(p);
+			}
 			msg(GRAY + "Found " + DARK_AQUA + mobs.size() + GRAY + " groups matching the specified arguments.");
 		} else {
 			msg(GRAY + "No mobs of type " + DARK_AQUA + tp + GRAY + " were found.");
