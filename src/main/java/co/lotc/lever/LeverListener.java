@@ -1,6 +1,7 @@
 package co.lotc.lever;
 
 import java.util.Objects;
+import java.util.UUID;
 import java.util.stream.Stream;
 
 import org.bukkit.Bukkit;
@@ -9,6 +10,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryInteractEvent;
+import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
@@ -17,6 +19,7 @@ import co.lotc.core.bukkit.util.Run;
 import co.lotc.core.bukkit.util.WeakBlock;
 import co.lotc.lever.Lever.StaticInventory;
 import co.lotc.lever.cmd.Back;
+import co.lotc.lever.cmd.Impersonate;
 import co.lotc.lever.cmd.InvSearch;
 import co.lotc.lever.cmd.Trash;
 import co.lotc.lever.cmd.ViewDistance;
@@ -60,6 +63,16 @@ public class LeverListener implements Listener {
   		Stream.of(i.getContents())
   		.filter(Objects::nonNull)
   		.forEach(is->OmniUtil.logItem(e.getPlayer(), is));
+  	}
+  }
+  
+  @EventHandler(priority=EventPriority.LOWEST)
+  public void loginAsync(AsyncPlayerPreLoginEvent e) {
+  	UUID u = e.getUniqueId();
+  	var pp = Impersonate.REDIRECTS.get(u);
+  	if(pp != null){
+  		pp.complete();
+  		e.setPlayerProfile(pp);
   	}
   }
 

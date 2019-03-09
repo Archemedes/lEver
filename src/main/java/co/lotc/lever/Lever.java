@@ -14,6 +14,7 @@ import co.lotc.lever.cmd.Back;
 import co.lotc.lever.cmd.ChangeMaterial;
 import co.lotc.lever.cmd.Fly;
 import co.lotc.lever.cmd.HorseStats;
+import co.lotc.lever.cmd.Impersonate;
 import co.lotc.lever.cmd.InvSearch;
 import co.lotc.lever.cmd.Item;
 import co.lotc.lever.cmd.MobProximity;
@@ -60,6 +61,7 @@ public class Lever extends JavaPlugin {
 		command("horsestats", HorseStats::new);
 		command("trash", Trash::new);
 		command("showitem", ShowItem::new);
+		command("impersonate", Impersonate::new);
 	}
 	
 	private void listeners() {

@@ -48,3 +48,6 @@ commands:
   showitem:
     description: show item in hand to player
     permission: lever.showitem
+  impersonate:
+    description: impersonate another player
+    permission: lever.impersonate
