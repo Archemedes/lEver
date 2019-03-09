@@ -15,6 +15,7 @@ import co.lotc.lever.cmd.ChangeMaterial;
 import co.lotc.lever.cmd.Fly;
 import co.lotc.lever.cmd.InvSearch;
 import co.lotc.lever.cmd.Item;
+import co.lotc.lever.cmd.MobProximity;
 import co.lotc.lever.cmd.Roll;
 import co.lotc.lever.cmd.Vanish;
 import co.lotc.lever.cmd.ViewDistance;
@@ -51,6 +52,7 @@ public class Lever extends JavaPlugin {
 		command("back", Back::new);
 		command("viewdistance", ViewDistance::new);
 		command("fly", Fly::new);
+		command("mobproximity", MobProximity::new);
 	}
 	
 	private void listeners() {

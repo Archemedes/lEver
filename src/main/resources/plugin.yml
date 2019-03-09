@@ -34,3 +34,6 @@ commands:
   viewdistance:
     description: Manipulate radius of chunks loaded around players
     permission: lever.viewdistance
+  mobproximity:
+    description: Checks for proximity of mobs
+    permission: lever.mobproximity
