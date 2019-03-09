@@ -10,17 +10,7 @@ import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import co.lotc.core.bukkit.util.WeakBlock;
-import co.lotc.lever.cmd.Back;
-import co.lotc.lever.cmd.ChangeMaterial;
-import co.lotc.lever.cmd.Fly;
-import co.lotc.lever.cmd.HorseSpeed;
-import co.lotc.lever.cmd.InvSearch;
-import co.lotc.lever.cmd.Item;
-import co.lotc.lever.cmd.MobProximity;
-import co.lotc.lever.cmd.Roll;
-import co.lotc.lever.cmd.Vanish;
-import co.lotc.lever.cmd.ViewDistance;
-import co.lotc.lever.cmd.WarpCommand;
+import co.lotc.lever.cmd.*;
 import lombok.Getter;
 import lombok.var;
 import net.lordofthecraft.arche.ArcheCore;
@@ -55,6 +45,7 @@ public class Lever extends JavaPlugin {
 		command("fly", Fly::new);
 		command("mobproximity", MobProximity::new);
 		command("horsespeed", HorseSpeed::new);
+		command("trash", Trash::new);
 	}
 	
 	private void listeners() {

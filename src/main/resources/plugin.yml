@@ -41,3 +41,6 @@ commands:
   horsespeed:
     description: Check speed of the horse you are riding
     permission: lever.horsespeed
+  trash:
+    description: open an inventory to dispose of unwanted items
+    permission: lever.trash

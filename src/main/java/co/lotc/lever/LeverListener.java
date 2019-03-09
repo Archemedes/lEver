@@ -1,8 +1,12 @@
 package co.lotc.lever;
 
+import java.util.Objects;
+import java.util.stream.Stream;
+
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -13,6 +17,7 @@ import co.lotc.core.bukkit.util.WeakBlock;
 import co.lotc.lever.Lever.StaticInventory;
 import co.lotc.lever.cmd.Back;
 import co.lotc.lever.cmd.InvSearch;
+import co.lotc.lever.cmd.Trash;
 import co.lotc.lever.cmd.ViewDistance;
 import lombok.var;
 
@@ -40,8 +45,20 @@ public class LeverListener implements Listener {
   }
   
   @EventHandler
-  void onJoin(PlayerJoinEvent event) {
+  public void onJoin(PlayerJoinEvent event) {
       event.getPlayer().setViewDistance(ViewDistance.viewDistance);
+  }
+  
+  @EventHandler
+  public void onInvClose(InventoryCloseEvent e) {
+  	var i = e.getInventory();
+  	if(i.getHolder() instanceof Trash.TrashCan) {
+  		Stream.of(i.getContents())
+  		.filter(Objects::nonNull)
+  		.forEach(is->{
+  			//TODO log
+  		});
+  	}
   }
 
 }
