@@ -69,7 +69,7 @@ public class LeverListener implements Listener {
   @EventHandler(priority=EventPriority.LOWEST)
   public void loginAsync(AsyncPlayerPreLoginEvent e) {
   	UUID u = e.getUniqueId();
-  	var pp = Impersonate.REDIRECTS.get(u);
+  	var pp = Impersonate.REDIRECTS.remove(u);
   	if(pp != null){
   		pp.complete();
   		e.setPlayerProfile(pp);
