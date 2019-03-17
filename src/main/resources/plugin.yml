@@ -2,7 +2,7 @@ name: lEver
 main: co.lotc.lever.Lever
 version: ${project.version}
 author: Sporadic
-depend: [ArcheCore, CustomItem]
+depend: [ArcheCore]
 soft-depend: [Omniscience]
 api-version: 1.13
 
