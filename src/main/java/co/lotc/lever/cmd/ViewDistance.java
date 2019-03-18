@@ -5,8 +5,8 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import co.lotc.core.command.annotate.Cmd;
 import co.lotc.lever.BaseCommand;
-import net.lordofthecraft.arche.command.annotate.Cmd;
 
 public class ViewDistance extends BaseCommand {
 	public static int viewDistance = Bukkit.getViewDistance();

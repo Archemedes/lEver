@@ -9,9 +9,9 @@ import org.bukkit.entity.Player;
 
 import com.destroystokyo.paper.profile.PlayerProfile;
 
-import net.lordofthecraft.arche.command.CommandTemplate;
+import co.lotc.lever.BaseCommand;
 
-public class Impersonate extends CommandTemplate {
+public class Impersonate extends BaseCommand {
 
 	public static Map<UUID, PlayerProfile> REDIRECTS = new HashMap<>();
 	

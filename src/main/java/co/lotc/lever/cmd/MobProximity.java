@@ -14,15 +14,15 @@ import org.bukkit.entity.Player;
 
 import co.lotc.core.bukkit.util.ChatBuilder;
 import co.lotc.core.bukkit.util.LocationUtil;
+import co.lotc.core.command.annotate.Arg;
+import co.lotc.core.command.annotate.Default;
+import co.lotc.core.command.annotate.Range;
+import co.lotc.lever.BaseCommand;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.var;
-import net.lordofthecraft.arche.command.CommandTemplate;
-import net.lordofthecraft.arche.command.annotate.Arg;
-import net.lordofthecraft.arche.command.annotate.Default;
-import net.lordofthecraft.arche.command.annotate.Range;
 
-public class MobProximity extends CommandTemplate {
+public class MobProximity extends BaseCommand {
 
 	@Data
 	@AllArgsConstructor

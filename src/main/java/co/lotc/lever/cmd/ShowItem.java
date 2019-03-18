@@ -8,10 +8,10 @@ import org.bukkit.inventory.ItemStack;
 import co.lotc.core.bukkit.util.ChatBuilder;
 import co.lotc.core.bukkit.util.ItemUtil;
 import co.lotc.core.bukkit.util.LocationUtil;
-import net.lordofthecraft.arche.command.CommandTemplate;
+import co.lotc.lever.BaseCommand;
 import net.lordofthecraft.arche.interfaces.Persona;
 
-public class ShowItem extends CommandTemplate {
+public class ShowItem extends BaseCommand {
 	public void invoke(Persona source, Player target) {
 		ItemStack is = source.getPlayer().getInventory().getItemInMainHand();
 		validate(ItemUtil.exists(is), "You need to hold an item in your hand to show!");

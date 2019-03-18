@@ -8,9 +8,9 @@ import java.util.TreeMap;
 
 import org.bukkit.Location;
 
+import co.lotc.core.bukkit.command.Commands;
 import lombok.var;
 import net.lordofthecraft.arche.ArcheCore;
-import net.lordofthecraft.arche.interfaces.CommandHandle;
 
 public class WarpManager {
 	public static final String TABLE = "lever_warps";
@@ -32,7 +32,7 @@ public class WarpManager {
 	}
 	
 	public void init() {
-		CommandHandle.defineArgumentType(Warp.class)
+		Commands.defineArgumentType(Warp.class)
 		.defaultName("warp name")
 		.defaultError("Not a valid warp!")
 		.completer(()->warps.keySet())

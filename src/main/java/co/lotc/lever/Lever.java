@@ -9,7 +9,9 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import co.lotc.core.bukkit.command.Commands;
 import co.lotc.core.bukkit.util.WeakBlock;
+import co.lotc.core.command.CommandTemplate;
 import co.lotc.lever.cmd.Back;
 import co.lotc.lever.cmd.ChangeMaterial;
 import co.lotc.lever.cmd.Fly;
@@ -27,8 +29,6 @@ import co.lotc.lever.cmd.WarpCommand;
 import lombok.Getter;
 import lombok.var;
 import net.lordofthecraft.arche.ArcheCore;
-import net.lordofthecraft.arche.command.CommandTemplate;
-import net.lordofthecraft.arche.interfaces.CommandHandle;
 
 public class Lever extends JavaPlugin {
 	private static Lever instance;
@@ -95,7 +95,7 @@ public class Lever extends JavaPlugin {
 	}
 	
 	private void command(String name, Supplier<CommandTemplate> supplier) {
-		CommandHandle.build(getCommand(name), supplier);
+		Commands.build(getCommand(name), supplier);
 	}
 	
 	@Override

@@ -7,9 +7,9 @@ import org.bukkit.entity.AbstractHorse;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
-import net.lordofthecraft.arche.command.CommandTemplate;
+import co.lotc.lever.BaseCommand;
 
-public class HorseStats extends CommandTemplate {
+public class HorseStats extends BaseCommand {
 	
 	
 	public void invoke(Player p) {

@@ -3,10 +3,10 @@ package co.lotc.lever.cmd;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import co.lotc.core.command.annotate.Arg;
+import co.lotc.core.command.annotate.Default;
+import co.lotc.core.command.annotate.Range;
 import co.lotc.lever.BaseCommand;
-import net.lordofthecraft.arche.command.annotate.Arg;
-import net.lordofthecraft.arche.command.annotate.Default;
-import net.lordofthecraft.arche.command.annotate.Range;
 
 public class Item extends BaseCommand {
 
