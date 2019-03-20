@@ -20,7 +20,7 @@ public class Warp {
 	}
 	
 	public void teleport(Player p) {
-		p.teleport(loc.toLocation());
+		p.teleportAsync(loc.toLocation());
 	}
 
 }
