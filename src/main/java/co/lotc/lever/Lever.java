@@ -61,7 +61,7 @@ public class Lever extends JavaPlugin {
 		command("horsestats", HorseStats::new);
 		command("trash", Trash::new);
 		command("showitem", ShowItem::new);
-		command("impersonate", Impersonate::new);
+		//command("impersonate", Impersonate::new);
 	}
 	
 	private void listeners() {
