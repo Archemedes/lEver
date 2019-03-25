@@ -24,7 +24,7 @@ public class WarpManager {
 		warps.put(name.toLowerCase(), new Warp(name, location));
 		ArcheCore.getConsumerControls().replace(TABLE)
 			.set("name", name.toLowerCase())
-			.set("world", location.getWorld())
+			.set("world", location.getWorld().getName())
 			.set("x", location.getX())
 			.set("y", location.getY())
 			.set("z", location.getZ())
