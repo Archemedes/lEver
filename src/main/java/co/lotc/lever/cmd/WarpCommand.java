@@ -38,13 +38,13 @@ public class WarpCommand extends BaseCommand {
 	@Cmd(value="Create a new warp at your location", permission="lever.warp.create")
 	public void create(Player p, @Arg("warp name") String warp) {
 		validate(warp.matches("[A-Za-z0-9]+"), "Invalid warp name!");
-		validate(warp.length() > 3, "Warp name too short!");
+		validate(warp.length() > 1, "Warp name too short!");
 		validate(!NumberUtils.isDigits(warp), "Warp name can't be all numbers!");
 		
 		plugin.getWarpManager().add(warp, p.getLocation());
 		msg(AQUA + "Successfully created the warp: " + WHITE + warp);
 	}
-	
+
 	@Cmd(value="Create a new warp at your location",permission="lever.warp.delete")
 	public void delete(CommandSender s, @Arg("warp name") String warp) {
 		validate(warp.matches("[A-Za-z0-9]+"), "Invalid warp name!");
