@@ -16,6 +16,9 @@ commands:
   roll:
     description: Roll an amount of dice
     permission: lever.roll
+  sneak:
+    description: toggle sneak
+    permission: lever.sneak
   fly:
     description: toggle flight
     permission: lever.fly

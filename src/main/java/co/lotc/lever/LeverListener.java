@@ -5,6 +5,8 @@ import java.util.UUID;
 import java.util.stream.Stream;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -14,6 +16,8 @@ import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
+import org.bukkit.event.player.PlayerToggleSneakEvent;
+import org.bukkit.event.player.PlayerToggleSprintEvent;
 
 import co.lotc.core.bukkit.util.Run;
 import co.lotc.core.bukkit.util.WeakBlock;
@@ -73,6 +77,14 @@ public class LeverListener implements Listener {
   	if(pp != null){
   		pp.complete();
   		e.setPlayerProfile(pp);
+  	}
+  }
+  
+  @EventHandler(ignoreCancelled = true)
+  public void sprint(PlayerToggleSprintEvent event) {
+  	final Player p = event.getPlayer();
+  	if (p.isSneaking()) {
+  		p.setSneaking(false);
   	}
   }
 
