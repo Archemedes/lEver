@@ -44,6 +44,7 @@ public class Lever extends JavaPlugin {
 		command("back", Back::new);
 		command("viewdistance", ViewDistance::new);
 		command("sneak", Sneak::new);
+		command("walk", Walk::new);
 		command("fly", Fly::new);
 		command("mobproximity", MobProximity::new);
 		command("horsestats", HorseStats::new);

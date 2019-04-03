@@ -5,7 +5,6 @@ import java.util.UUID;
 import java.util.stream.Stream;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -16,7 +15,6 @@ import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
-import org.bukkit.event.player.PlayerToggleSneakEvent;
 import org.bukkit.event.player.PlayerToggleSprintEvent;
 
 import co.lotc.core.bukkit.util.Run;
@@ -27,6 +25,7 @@ import co.lotc.lever.cmd.Impersonate;
 import co.lotc.lever.cmd.InvSearch;
 import co.lotc.lever.cmd.Trash;
 import co.lotc.lever.cmd.ViewDistance;
+import co.lotc.lever.cmd.Walk;
 import lombok.var;
 
 public class LeverListener implements Listener {
@@ -42,6 +41,9 @@ public class LeverListener implements Listener {
   @EventHandler
   public void onLog(final PlayerQuitEvent e) {
       InvSearch.requests.remove(e.getPlayer().getUniqueId());
+      
+      if(Walk.isWalking(e.getPlayer()));
+      	Walk.disableWalk(e.getPlayer());
   }
   
   @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
@@ -85,6 +87,10 @@ public class LeverListener implements Listener {
   	final Player p = event.getPlayer();
   	if (p.isSneaking()) {
   		p.setSneaking(false);
+  	}
+  	
+  	if(Walk.isWalking(p)) {
+  		Walk.disableWalk(p);
   	}
   }
 
