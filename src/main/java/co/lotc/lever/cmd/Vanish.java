@@ -24,7 +24,6 @@ public class Vanish extends BaseCommand {
 		UUID u = p.getUniqueId();
 		if(VANISHED.contains(u)) {
 			deactivate(p);
-			p.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 120, 4));
 			msg(LIGHT_PURPLE + "You are no longer invisible");
 		} else {
 			VANISHED.add(u);
