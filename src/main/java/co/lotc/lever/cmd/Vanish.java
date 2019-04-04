@@ -25,10 +25,13 @@ public class Vanish extends BaseCommand {
 		if(VANISHED.contains(u)) {
 			VANISHED.remove(u);
 			p.removePotionEffect(PotionEffectType.INVISIBILITY);
+			p.setAllowFlight(false);
+			p.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 120, 4));
 			msg(LIGHT_PURPLE + "You are no longer invisible");
 		} else {
 			VANISHED.add(u);
 			applyInvis(p);
+			p.setAllowFlight(true);
 			msg(GREEN + "You are now invisible!");
 		}
 	}
