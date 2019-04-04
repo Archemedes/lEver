@@ -16,8 +16,10 @@ import org.bukkit.potion.PotionEffectType;
 
 import co.lotc.core.command.annotate.Cmd;
 import co.lotc.lever.BaseCommand;
+import co.lotc.lever.Lever;
 
 public class Vanish extends BaseCommand {
+	public static final String PEX_SEE_VANISHED = "lever.vanish.cansee";
 	public static final Set<UUID> VANISHED = new HashSet<>();
 
 	public void invoke(Player p) {
@@ -26,9 +28,9 @@ public class Vanish extends BaseCommand {
 			deactivate(p);
 			msg(LIGHT_PURPLE + "You are no longer invisible");
 		} else {
+			Bukkit.getOnlinePlayers().forEach(x->maybeHide(p, x));
 			VANISHED.add(u);
 			applyInvis(p);
-			p.setSilent(true);
 			p.setAllowFlight(true);
 			msg(GREEN + "You are now invisible!");
 		}
@@ -46,13 +48,22 @@ public class Vanish extends BaseCommand {
 		msg(AQUA + "Players in vanish mode: " + names);
 	}
 	
+	
 	public static void deactivate(Player p) {
+		Bukkit.getOnlinePlayers().stream().filter(x->x!=p).forEach(x->x.showPlayer(Lever.get(), p));
 		p.removePotionEffect(PotionEffectType.INVISIBILITY);
-		p.setSilent(false);
 		VANISHED.remove(p.getUniqueId());
 	}
 	
 	public static void applyInvis(Player p) {
 		p.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 200_000, 2, true, false), true);
+		
+	}
+	
+	public static void maybeHide(Player who, Player from) {
+		if(who == from) return;
+		if(!from.hasPermission(PEX_SEE_VANISHED)) {
+			from.hidePlayer(Lever.get(), who);
+		}
 	}
 }

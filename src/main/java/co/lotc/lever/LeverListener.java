@@ -63,7 +63,16 @@ public class LeverListener implements Listener {
   
   @EventHandler
   public void onJoin(PlayerJoinEvent event) {
-      event.getPlayer().setViewDistance(ViewDistance.viewDistance);
+  	Player p = event.getPlayer();
+    
+  	p.setViewDistance(ViewDistance.viewDistance);
+    
+  	if(!p.hasPermission(Vanish.PEX_SEE_VANISHED)) {
+	  		Vanish.VANISHED.stream()
+	  		.map(Bukkit::getPlayer)
+	  		.filter(Objects::nonNull)
+	  		.forEach(x->p.hidePlayer(Lever.get(), x));
+  	}
   }
   
   @EventHandler
