@@ -23,12 +23,13 @@ public class Vanish extends BaseCommand {
 	public void invoke(Player p) {
 		UUID u = p.getUniqueId();
 		if(VANISHED.contains(u)) {
-			VANISHED.remove(u);
-			p.removePotionEffect(PotionEffectType.INVISIBILITY);
+			deactivate(p);
 			msg(LIGHT_PURPLE + "You are no longer invisible");
 		} else {
 			VANISHED.add(u);
 			applyInvis(p);
+			p.setSilent(true);
+			p.setAllowFlight(true);
 			msg(GREEN + "You are now invisible!");
 		}
 	}
@@ -45,6 +46,11 @@ public class Vanish extends BaseCommand {
 		msg(AQUA + "Players in vanish mode: " + names);
 	}
 	
+	public static void deactivate(Player p) {
+		p.removePotionEffect(PotionEffectType.INVISIBILITY);
+		p.setSilent(false);
+		VANISHED.remove(p.getUniqueId());
+	}
 	
 	public static void applyInvis(Player p) {
 		p.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 200_000, 2, true, false), true);
