@@ -1,16 +1,11 @@
 package co.lotc.lever;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
-
-import org.bukkit.Location;
-
 import co.lotc.core.bukkit.command.Commands;
 import lombok.var;
 import net.lordofthecraft.arche.ArcheCore;
+import org.bukkit.Location;
+
+import java.util.*;
 
 public class WarpManager {
 	public static final String TABLE = "lever_warps";
@@ -28,6 +23,7 @@ public class WarpManager {
 			.set("x", location.getX())
 			.set("y", location.getY())
 			.set("z", location.getZ())
+			.set("yaw", location.getYaw())
 			.queue();
 	}
 	
@@ -35,8 +31,8 @@ public class WarpManager {
 		Commands.defineArgumentType(Warp.class)
 		.defaultName("warp name")
 		.defaultError("Not a valid warp!")
-		.completer(()->warps.keySet())
-		.mapper(s->warps.get(s))
+		.completer(warps::keySet)
+		.mapper(warps::get)
 		.register();
 		
 	}

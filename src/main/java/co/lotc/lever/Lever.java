@@ -66,7 +66,7 @@ public class Lever extends JavaPlugin {
 	private void sql() {
 		var sql = ArcheCore.getSQLControls();
 		try(var c = sql.getConnection(); var s = c.createStatement()){
-			s.execute("CREATE TABLE IF NOT EXISTS "+WarpManager.TABLE+"(name TEXT PRIMARY KEY, world TEXT, x INT, y INT, z INT)");
+			s.execute("CREATE TABLE IF NOT EXISTS "+WarpManager.TABLE+"(name TEXT PRIMARY KEY, world TEXT, x INT, y INT, z INT, yaw REAL)");
 			ResultSet rs = s.executeQuery("SELECT * FROM " + WarpManager.TABLE);
 			while(rs.next()) {
 				String name = rs.getString("name");
@@ -74,8 +74,9 @@ public class Lever extends JavaPlugin {
 				int x = rs.getInt("x");
 				int y = rs.getInt("y");
 				int z = rs.getInt("z");
+				float yaw = rs.getFloat("yaw");
 				
-				warpManager.load(name, new Warp(name, new WeakBlock(world, x, y, z)));
+				warpManager.load(name, new Warp(name, new WeakBlock(world, x, y, z), yaw));
 			}
 			rs.close();
 		}catch(SQLException e) {
