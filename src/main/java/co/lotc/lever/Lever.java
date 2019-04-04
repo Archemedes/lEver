@@ -11,7 +11,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.potion.PotionEffectType;
 
 import co.lotc.core.bukkit.command.Commands;
 import co.lotc.core.bukkit.util.Run;
@@ -86,8 +85,7 @@ public class Lever extends JavaPlugin {
 	  	if(Walk.isWalking(p)) p.setWalkSpeed(0.2F);
 
 	  	if(Vanish.VANISHED.contains(u)) {
-	  		p.removePotionEffect(PotionEffectType.INVISIBILITY);
-	  		p.setAllowFlight(false);
+	  		Vanish.deactivate(p);
 	  	}
 		}
 	}

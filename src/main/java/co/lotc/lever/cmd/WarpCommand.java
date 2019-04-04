@@ -17,15 +17,9 @@ import lombok.var;
 
 public class WarpCommand extends BaseCommand {
 
-	
 	public void invoke(Player p, Warp warp) {
 		validate(p.hasPermission("lever.warp."+warp.getName()), "You do not have permission!");
 		warp.teleport(p);
-	}
-	
-	public void invoke(CommandSender snd, Warp warp, Player target) {
-		validate(snd.hasPermission("lever.warp."+warp.getName()), "You do not have permission!");
-		warp.teleport(target);
 	}
 	
 	@Cmd("List the currently defined warps")
@@ -53,9 +47,10 @@ public class WarpCommand extends BaseCommand {
 
 	@Cmd(value="Create a new warp at your location",permission="lever.warp.delete")
 	public void delete(CommandSender s, @Arg("warp name") String warp) {
-		validate(warp.matches("[A-Za-z0-9]+"), "Invalid warp name!");
+		//validate(warp.matches("[A-Za-z0-9]+"), "Invalid warp name!");
 		//validate(warp.length() > 3, "Warp name too short!");
 		validate(!NumberUtils.isDigits(warp), "Warp name can't be all numbers!");
+		validate(plugin.getWarpManager().hasWarp(warp), "No warp found with this name!");
 		
 		boolean result = plugin.getWarpManager().remove(warp);
 		if(!result) error("That warp does not exist!");
