@@ -1,14 +1,6 @@
 package co.lotc.lever.cmd;
 
-import static org.bukkit.ChatColor.*;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
-
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
-
+import co.lotc.core.Tythan;
 import co.lotc.core.bukkit.util.LocationUtil;
 import co.lotc.core.bukkit.util.Run;
 import co.lotc.core.command.annotate.Cmd;
@@ -18,6 +10,14 @@ import lombok.var;
 import net.lordofthecraft.arche.ArcheCore;
 import net.lordofthecraft.arche.interfaces.Economy;
 import net.lordofthecraft.arche.interfaces.Persona;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
+import static org.bukkit.ChatColor.*;
 
 public class InvSearch extends BaseCommand {
 	public static Map<UUID, UUID> requests = new HashMap<>();
@@ -26,6 +26,8 @@ public class InvSearch extends BaseCommand {
 		validate(LocationUtil.isClose(me.getPlayer(), you.getPlayer()), "That Player is too far away!");
 		msg("%sSending a request to search the player's inventory.", BLUE);
 		requests.put(me.getPlayerUUID(), you.getPlayerUUID());
+		you.getPlayer().sendMessage(me.getPlayerName() + BLUE + " requests to search your inventory.");
+		you.getPlayer().sendMessage(Tythan.get().chatBuilder().appendButton(GREEN + "[Allow]", "/invsearch accept").appendButton(RED + " [Deny]", "/invsearch deny").build());
 
 		Run.as(plugin).delayed(400,()->requests.remove(me.getPlayerUUID()));
 	}
@@ -36,7 +38,7 @@ public class InvSearch extends BaseCommand {
 				
 		final Economy econ = ArcheCore.getControls().getEconomy();
     final boolean flag = econ != null;
-    final String title = flag ? (String.valueOf(econ.currencyNamePlural()) + ": " + GREEN + econ.getBalance(me)) : "Searched Possessions";
+    final String title = flag ? (econ.currencyNamePlural() + ": " + GREEN + econ.getBalance(me)) : "Searched Possessions";
 		
 		var iter = requests.entrySet().iterator();
 		while(iter.hasNext()) {
