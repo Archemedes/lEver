@@ -16,6 +16,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.event.player.PlayerToggleSprintEvent;
+import org.bukkit.potion.PotionEffectType;
 
 import co.lotc.core.bukkit.util.Run;
 import co.lotc.core.bukkit.util.WeakBlock;
@@ -48,7 +49,11 @@ public class LeverListener implements Listener {
 
   	if(Walk.isWalking(p)) Walk.disableWalk(p);
 
-  	Vanish.VANISHED.remove(e.getPlayer().getUniqueId());
+  	if(Vanish.VANISHED.contains(u)) {
+  		p.removePotionEffect(PotionEffectType.INVISIBILITY);
+  		p.setAllowFlight(false);
+  		Vanish.VANISHED.remove(u);
+  	}
   }
   
   @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)

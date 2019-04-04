@@ -3,12 +3,15 @@ package co.lotc.lever;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Objects;
+import java.util.UUID;
 import java.util.function.Supplier;
 
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.potion.PotionEffectType;
 
 import co.lotc.core.bukkit.command.Commands;
 import co.lotc.core.bukkit.util.Run;
@@ -73,6 +76,22 @@ public class Lever extends JavaPlugin {
 		Run.as(this).repeating(1746l, ()->Vanish.VANISHED.stream().map(Bukkit::getPlayer).filter(Objects::nonNull).forEach(Vanish::applyInvis));
 	}
 	
+	@Override
+	public void onDisable(){
+		for(Player p : Bukkit.getOnlinePlayers()) {
+	  	UUID u = p.getUniqueId();
+	  	
+	  	InvSearch.requests.remove(u);
+
+	  	if(Walk.isWalking(p)) p.setWalkSpeed(0.2F);
+
+	  	if(Vanish.VANISHED.contains(u)) {
+	  		p.removePotionEffect(PotionEffectType.INVISIBILITY);
+	  		p.setAllowFlight(false);
+	  	}
+		}
+	}
+	
 	private void listeners() {
 		Bukkit.getPluginManager().registerEvents(new LeverListener(), this);
 	}
@@ -106,11 +125,6 @@ public class Lever extends JavaPlugin {
 	
 	private void command(String name, Supplier<CommandTemplate> supplier) {
 		Commands.build(getCommand(name), supplier);
-	}
-	
-	@Override
-	public void onDisable(){
-
 	}
 	
 	public static class StaticInventory implements InventoryHolder{
