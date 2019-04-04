@@ -86,6 +86,7 @@ public class Lever extends JavaPlugin {
 
 	  	if(Vanish.VANISHED.contains(u)) {
 	  		Vanish.deactivate(p);
+	  		p.setAllowFlight(false);
 	  	}
 		}
 	}

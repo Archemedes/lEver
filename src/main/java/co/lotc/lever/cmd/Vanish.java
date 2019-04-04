@@ -49,7 +49,6 @@ public class Vanish extends BaseCommand {
 	
 	public static void deactivate(Player p) {
 		p.removePotionEffect(PotionEffectType.INVISIBILITY);
-		p.setAllowFlight(false);
 		p.setSilent(false);
 		VANISHED.remove(p.getUniqueId());
 	}

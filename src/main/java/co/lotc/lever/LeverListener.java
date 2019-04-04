@@ -47,7 +47,10 @@ public class LeverListener implements Listener {
   	InvSearch.requests.remove(u);
 
   	if(Walk.isWalking(p)) Walk.disableWalk(p);
-  	if(Vanish.VANISHED.contains(u)) Vanish.deactivate(p);
+  	if(Vanish.VANISHED.contains(u)) {
+  		p.setAllowFlight(false);
+  		Vanish.deactivate(p);
+  	}
   }
   
   @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
