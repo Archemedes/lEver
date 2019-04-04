@@ -1,5 +1,7 @@
 package co.lotc.lever;
 
+import static net.md_5.bungee.api.ChatColor.GREEN;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Objects;
@@ -58,7 +60,8 @@ public class Lever extends JavaPlugin {
 		command("showitem", ShowItem::new);
 		//command("impersonate", Impersonate::new);
 		
-		Run.as(this).repeating(1746l, ()->Vanish.VANISHED.stream().map(Bukkit::getPlayer).filter(Objects::nonNull).forEach(Vanish::applyInvis));
+		Run.as(this).repeating(107l, ()->Vanish.VANISHED.stream().map(Bukkit::getPlayer).filter(Objects::nonNull)
+				.forEach(p->p.sendActionBar(GREEN + "You are vanished!") ));
 	}
 	
 	@Override

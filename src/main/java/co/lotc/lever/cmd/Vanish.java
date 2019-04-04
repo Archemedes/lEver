@@ -11,8 +11,6 @@ import java.util.stream.Collectors;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 
 import co.lotc.core.command.annotate.Cmd;
 import co.lotc.lever.BaseCommand;
@@ -30,7 +28,6 @@ public class Vanish extends BaseCommand {
 		} else {
 			Bukkit.getOnlinePlayers().forEach(x->maybeHide(p, x));
 			VANISHED.add(u);
-			applyInvis(p);
 			p.setAllowFlight(true);
 			msg(GREEN + "You are now invisible!");
 		}
@@ -51,13 +48,7 @@ public class Vanish extends BaseCommand {
 	
 	public static void deactivate(Player p) {
 		Bukkit.getOnlinePlayers().stream().filter(x->x!=p).forEach(x->x.showPlayer(Lever.get(), p));
-		p.removePotionEffect(PotionEffectType.INVISIBILITY);
 		VANISHED.remove(p.getUniqueId());
-	}
-	
-	public static void applyInvis(Player p) {
-		p.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 200_000, 2, true, false), true);
-		
 	}
 	
 	public static void maybeHide(Player who, Player from) {
