@@ -46,8 +46,7 @@ public class LeverListener implements Listener {
   	
   	InvSearch.requests.remove(u);
 
-  	if(Walk.isWalking(p));
-  	Walk.disableWalk(p);
+  	if(Walk.isWalking(p)) Walk.disableWalk(p);
 
   	Vanish.VANISHED.remove(e.getPlayer().getUniqueId());
   }
