@@ -15,6 +15,10 @@ public class WarpManager {
 		warps.put(name, warp);
 	}
 	
+	public boolean hasWarp(String name) {
+		return warps.containsKey(name);
+	}
+	
 	public void add(String name, Location location) {
 		warps.put(name.toLowerCase(), new Warp(name, location));
 		ArcheCore.getConsumerControls().replace(TABLE)
