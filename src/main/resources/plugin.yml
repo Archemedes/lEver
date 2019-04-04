@@ -57,3 +57,6 @@ commands:
   impersonate:
     description: impersonate another player
     permission: lever.impersonate
+  warpimport:
+    description: Imports warps from Essentials
+    permission: lever.import

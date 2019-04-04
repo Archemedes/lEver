@@ -34,6 +34,11 @@
             <id>lotc-release</id>
             <url>https://repo.lordofthecraft.net/artifactory/lotc-releases/</url>
         </repository>
+        <!-- Essentials Repo -->
+        <repository>
+            <id>ess-repo</id>
+            <url>http://repo.ess3.net/content/groups/essentials</url>
+        </repository>
     </repositories>
 
     <!-- Dependencies -->
@@ -51,7 +56,6 @@
             <artifactId>ProtocolLib-API</artifactId>
             <version>4.4.0</version>
         </dependency>
-	<!--CustomItem-->
 	<!--ArcheCore-->
 	<dependency>
 		<groupId>net.lordofthecraft.arche</groupId>
@@ -69,7 +73,14 @@
 		<groupId>net.lordofthecraft</groupId>
 		<artifactId>OmniscienceAPI</artifactId>
 		<version>1.0.2</version>
-	</dependency>
+    </dependency>
+    <!-- Essentials -->
+    <dependency>
+        <groupId>net.ess3</groupId>
+        <artifactId>Essentials</artifactId>
+        <version>2.13.1</version>
+        <scope>provided</scope>
+    </dependency>
     </dependencies>
         
     <build>

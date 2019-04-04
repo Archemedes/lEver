@@ -1,14 +1,5 @@
 package co.lotc.lever;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.function.Supplier;
-
-import org.bukkit.Bukkit;
-import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.InventoryHolder;
-import org.bukkit.plugin.java.JavaPlugin;
-
 import co.lotc.core.bukkit.command.Commands;
 import co.lotc.core.bukkit.util.WeakBlock;
 import co.lotc.core.command.CommandTemplate;
@@ -16,6 +7,14 @@ import co.lotc.lever.cmd.*;
 import lombok.Getter;
 import lombok.var;
 import net.lordofthecraft.arche.ArcheCore;
+import org.bukkit.Bukkit;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.InventoryHolder;
+import org.bukkit.plugin.java.JavaPlugin;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.function.Supplier;
 
 public class Lever extends JavaPlugin {
 	private static Lever instance;
@@ -50,6 +49,7 @@ public class Lever extends JavaPlugin {
 		command("horsestats", HorseStats::new);
 		command("trash", Trash::new);
 		command("showitem", ShowItem::new);
+		command("warpimport", WarpImport::new);
 		//command("impersonate", Impersonate::new);
 	}
 	
