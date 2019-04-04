@@ -10,13 +10,16 @@ import org.bukkit.entity.Player;
 
 import co.lotc.core.bukkit.util.ChatBuilder;
 import co.lotc.core.bukkit.util.LocationUtil;
-import co.lotc.core.command.annotate.Default;
+import co.lotc.core.command.annotate.Flag;
 import co.lotc.lever.BaseCommand;
 import lombok.var;
 
 public class Near extends BaseCommand {
 	
-	public void invoke(Player p, @Default("64") double radius) {
+	@Flag(name="r",description="radius to search in",type=double.class)
+	public void invoke(Player p) {
+		final double radius = hasFlag("r")? getFlag("r") : 64.0;
+		
 		var nears = Bukkit.getOnlinePlayers().stream()
 		.filter(x->x!=p)
 		.filter(x->LocationUtil.isClose(x, p, radius))
