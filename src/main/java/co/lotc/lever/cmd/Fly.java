@@ -3,6 +3,8 @@ package co.lotc.lever.cmd;
 import static net.md_5.bungee.api.ChatColor.*;
 
 import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 import co.lotc.lever.BaseCommand;
 
@@ -13,6 +15,9 @@ public class Fly extends BaseCommand {
 		p.setAllowFlight(!p.getAllowFlight());
 		
 		if(p.getAllowFlight()) msg(GREEN + "You are now flying");
-		else msg(LIGHT_PURPLE + "You are no longer flying");
+		else {
+			p.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 120, 4));
+			msg(LIGHT_PURPLE + "You are no longer flying");
+		}
 	}
 }

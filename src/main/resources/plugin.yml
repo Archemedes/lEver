@@ -32,8 +32,11 @@ commands:
   changematerial:
     description: Change the material of an item
     permission: lever.item
-  vanish:
+  spectate:
     description: Spectator mode toggle command
+    permission: lever.spectate
+  vanish:
+    description: Vanish mode toggle command
     permission: lever.vanish
     aliases: [v]
   back:

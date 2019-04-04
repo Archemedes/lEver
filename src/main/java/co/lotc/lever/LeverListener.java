@@ -24,6 +24,7 @@ import co.lotc.lever.cmd.Back;
 import co.lotc.lever.cmd.Impersonate;
 import co.lotc.lever.cmd.InvSearch;
 import co.lotc.lever.cmd.Trash;
+import co.lotc.lever.cmd.Vanish;
 import co.lotc.lever.cmd.ViewDistance;
 import co.lotc.lever.cmd.Walk;
 import lombok.var;
@@ -40,10 +41,15 @@ public class LeverListener implements Listener {
   
   @EventHandler
   public void onLog(final PlayerQuitEvent e) {
-      InvSearch.requests.remove(e.getPlayer().getUniqueId());
-      
-      if(Walk.isWalking(e.getPlayer()));
-      	Walk.disableWalk(e.getPlayer());
+  	Player p = e.getPlayer();
+  	UUID u = p.getUniqueId();
+  	
+  	InvSearch.requests.remove(u);
+
+  	if(Walk.isWalking(p));
+  	Walk.disableWalk(p);
+
+  	Vanish.VANISHED.remove(e.getPlayer().getUniqueId());
   }
   
   @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
