@@ -13,14 +13,19 @@ import lombok.RequiredArgsConstructor;
 public class Warp {
 	@Getter private final String name;
 	private final WeakBlock loc;
+	private final float yaw;
 	
 	public Warp(String name, Location l) {
 		this.name = name;
 		loc = new WeakBlock(l);
+		yaw = l.getYaw();
 	}
 	
 	public void teleport(Player p) {
-		p.teleportAsync(loc.toLocation());
+		Location location = loc.toLocation();
+		location.setYaw(yaw);
+		location.add(0.5, 0.3, 0.5); // Center the player on the block they're teleporting to
+		p.teleportAsync(location);
 	}
 
 }
