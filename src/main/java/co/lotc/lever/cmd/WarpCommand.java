@@ -23,6 +23,11 @@ public class WarpCommand extends BaseCommand {
 		warp.teleport(p);
 	}
 	
+	public void invoke(CommandSender snd, Warp warp, Player target) {
+		validate(snd.hasPermission("lever.warp."+warp.getName()), "You do not have permission!");
+		warp.teleport(target);
+	}
+	
 	@Cmd("List the currently defined warps")
 	public void list(CommandSender s, @Default("1") @Arg("page") @Range(min=1) int page) {
 		validate(page > 0, "Invalid page!");

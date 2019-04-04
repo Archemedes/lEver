@@ -1,20 +1,38 @@
 package co.lotc.lever;
 
-import co.lotc.core.bukkit.command.Commands;
-import co.lotc.core.bukkit.util.WeakBlock;
-import co.lotc.core.command.CommandTemplate;
-import co.lotc.lever.cmd.*;
-import lombok.Getter;
-import lombok.var;
-import net.lordofthecraft.arche.ArcheCore;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Objects;
+import java.util.function.Supplier;
+
 import org.bukkit.Bukkit;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.function.Supplier;
+import co.lotc.core.bukkit.command.Commands;
+import co.lotc.core.bukkit.util.Run;
+import co.lotc.core.bukkit.util.WeakBlock;
+import co.lotc.core.command.CommandTemplate;
+import co.lotc.lever.cmd.Back;
+import co.lotc.lever.cmd.ChangeMaterial;
+import co.lotc.lever.cmd.Fly;
+import co.lotc.lever.cmd.HorseStats;
+import co.lotc.lever.cmd.InvSearch;
+import co.lotc.lever.cmd.Item;
+import co.lotc.lever.cmd.MobProximity;
+import co.lotc.lever.cmd.Roll;
+import co.lotc.lever.cmd.ShowItem;
+import co.lotc.lever.cmd.Sneak;
+import co.lotc.lever.cmd.Spectate;
+import co.lotc.lever.cmd.Trash;
+import co.lotc.lever.cmd.Vanish;
+import co.lotc.lever.cmd.ViewDistance;
+import co.lotc.lever.cmd.Walk;
+import co.lotc.lever.cmd.WarpCommand;
+import lombok.Getter;
+import lombok.var;
+import net.lordofthecraft.arche.ArcheCore;
 
 public class Lever extends JavaPlugin {
 	private static Lever instance;
@@ -39,6 +57,7 @@ public class Lever extends JavaPlugin {
 		command("warp", WarpCommand::new);
 		command("item", Item::new);
 		command("changematerial", ChangeMaterial::new);
+		command("spectate", Spectate::new);
 		command("vanish", Vanish::new);
 		command("back", Back::new);
 		command("viewdistance", ViewDistance::new);
@@ -50,6 +69,8 @@ public class Lever extends JavaPlugin {
 		command("trash", Trash::new);
 		command("showitem", ShowItem::new);
 		//command("impersonate", Impersonate::new);
+		
+		Run.as(this).repeating(1746l, ()->Vanish.VANISHED.stream().map(Bukkit::getPlayer).filter(Objects::nonNull).forEach(Vanish::applyInvis));
 	}
 	
 	private void listeners() {
