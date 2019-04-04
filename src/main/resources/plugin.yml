@@ -7,6 +7,9 @@ soft-depend: [Omniscience]
 api-version: 1.13
 
 commands:
+  near:
+    description: Show all the players nearby you
+    permission: lever.near
   warp:
     description: Teleport to a pre-defined location
     permission: lever.warp
