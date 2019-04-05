@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityTargetLivingEntityEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryInteractEvent;
 import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
@@ -52,6 +53,13 @@ public class LeverListener implements Listener {
   		Vanish.deactivate(p);
   	}
   }
+  
+  @EventHandler(ignoreCancelled = true)
+	public void target(EntityTargetLivingEntityEvent e) {
+		var target = e.getTarget();
+		if(target instanceof Player && Vanish.VANISHED.contains(target.getUniqueId()))
+			e.setCancelled(true);
+	}
   
   @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
   public void tp(PlayerTeleportEvent e) {
