@@ -2,22 +2,23 @@ package co.lotc.lever.cmd;
 
 import static net.md_5.bungee.api.ChatColor.*;
 
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import co.lotc.core.command.annotate.Default;
 import co.lotc.lever.BaseCommand;
 
 public class Fly extends BaseCommand {
-
-	public void invoke(Player p) {
+	
+	public void invoke(CommandSender s, @Default("@p") Player target) {
+		target.setAllowFlight(!target.getAllowFlight());
 		
-		p.setAllowFlight(!p.getAllowFlight());
-		
-		if(p.getAllowFlight()) msg(GREEN + "You are now flying");
+		if(target.getAllowFlight()) target.sendMessage(GREEN + "You are now flying");
 		else {
-			p.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 120, 4));
-			msg(LIGHT_PURPLE + "You are no longer flying");
+			target.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 120, 4));
+			target.sendMessage(LIGHT_PURPLE + "You are no longer flying");
 		}
 	}
 }
