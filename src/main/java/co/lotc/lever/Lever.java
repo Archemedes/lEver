@@ -60,7 +60,7 @@ public class Lever extends JavaPlugin {
 		command("showitem", ShowItem::new);
 		//command("impersonate", Impersonate::new);
 		
-		Run.as(this).repeating(107l, ()->Vanish.VANISHED.stream().map(Bukkit::getPlayer).filter(Objects::nonNull)
+		Run.as(this).repeating(61l, ()->Vanish.VANISHED.stream().map(Bukkit::getPlayer).filter(Objects::nonNull)
 				.forEach(p->p.sendActionBar(GREEN + "You are vanished!") ));
 	}
 	

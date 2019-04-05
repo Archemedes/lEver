@@ -29,9 +29,11 @@ public class Vanish extends BaseCommand {
 			Bukkit.getOnlinePlayers().forEach(x->maybeHide(p, x));
 			VANISHED.add(u);
 			p.setAllowFlight(true);
+			p.setGlowing(true);
 			msg(GREEN + "You are now invisible!");
 		}
 	}
+
 	
 	@Cmd("List people in vanish mode")
 	public void list() {
@@ -49,6 +51,7 @@ public class Vanish extends BaseCommand {
 	public static void deactivate(Player p) {
 		Bukkit.getOnlinePlayers().stream().filter(x->x!=p).forEach(x->x.showPlayer(Lever.get(), p));
 		VANISHED.remove(p.getUniqueId());
+		p.setGlowing(false);
 	}
 	
 	public static void maybeHide(Player who, Player from) {
