@@ -28,6 +28,7 @@ public class Vanish extends BaseCommand {
 		} else {
 			Bukkit.getOnlinePlayers().forEach(x->maybeHide(p, x));
 			VANISHED.add(u);
+			p.setInvulnerable(true);
 			p.setAllowFlight(true);
 			p.setGlowing(true);
 			msg(GREEN + "You are now invisible!");
@@ -52,6 +53,7 @@ public class Vanish extends BaseCommand {
 		Bukkit.getOnlinePlayers().stream().filter(x->x!=p).forEach(x->x.showPlayer(Lever.get(), p));
 		VANISHED.remove(p.getUniqueId());
 		p.setGlowing(false);
+		p.setInvulnerable(false);
 	}
 	
 	public static void maybeHide(Player who, Player from) {
