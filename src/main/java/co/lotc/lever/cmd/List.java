@@ -29,11 +29,16 @@ public class List extends BaseCommand{
 		.send(sender);
 		
 		if(sender.hasPermission("lever.list.names")) {
-			if(hasFlag("names")) sender.sendMessage(GRAY + StringUtils.join(on, WHITE+", "+GRAY));
-			else new ChatBuilder("Use ").color(LIGHT_PURPLE)
+			if(hasFlag("names")) {
+				on.sort(null);
+				sender.sendMessage(GRAY + StringUtils.join(on, WHITE+", "+GRAY));
+			}else {
+				new ChatBuilder("Use ").color(LIGHT_PURPLE)
 				.append("/list -names").color(GRAY).italic().command("/list -names")
 				.append(" to see the names of online players.").color(LIGHT_PURPLE)
 				.send(sender);
+			}
 		}
 	}
+
 }
