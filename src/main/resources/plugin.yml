@@ -7,6 +7,9 @@ soft-depend: [Omniscience]
 api-version: 1.13
 
 commands:
+  list:
+    description: list online players
+    permission: lever.list
   near:
     description: Show all the players nearby you
     permission: lever.near

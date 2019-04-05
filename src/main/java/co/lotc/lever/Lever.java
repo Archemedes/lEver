@@ -41,6 +41,7 @@ public class Lever extends JavaPlugin {
 		warpManager.init();
 		listeners();
 		
+		command("list", List::new);
 		command("near", Near::new);
 		command("roll", Roll::new);
 		command("invsearch", InvSearch::new);
