@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityTargetLivingEntityEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryInteractEvent;
 import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
@@ -21,6 +22,7 @@ import co.lotc.core.bukkit.util.Run;
 import co.lotc.core.bukkit.util.WeakBlock;
 import co.lotc.lever.Lever.StaticInventory;
 import co.lotc.lever.cmd.Back;
+import co.lotc.lever.cmd.Fly;
 import co.lotc.lever.cmd.Impersonate;
 import co.lotc.lever.cmd.InvSearch;
 import co.lotc.lever.cmd.Trash;
@@ -48,10 +50,19 @@ public class LeverListener implements Listener {
 
   	if(Walk.isWalking(p)) Walk.disableWalk(p);
   	if(Vanish.VANISHED.contains(u)) {
-  		p.setAllowFlight(false);
+  		if(p.hasPermission("lever.vanish.persist")) Vanish.persist(p);
   		Vanish.deactivate(p);
+  	} else if(p.getAllowFlight() && p.isFlying() && p.hasPermission("lever.fly.persist")) {
+  		p.addScoreboardTag(Fly.FLY_PERSIST_TAG);
   	}
   }
+  
+  @EventHandler(ignoreCancelled = true)
+	public void target(EntityTargetLivingEntityEvent e) {
+		var target = e.getTarget();
+		if(target instanceof Player && Vanish.VANISHED.contains(target.getUniqueId()))
+			e.setCancelled(true);
+	}
   
   @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
   public void tp(PlayerTeleportEvent e) {
@@ -65,6 +76,13 @@ public class LeverListener implements Listener {
   public void onJoin(PlayerJoinEvent event) {
   	Player p = event.getPlayer();
     
+  	if(p.removeScoreboardTag(Vanish.VANISH_PERSIST_TAG))
+  		p.performCommand("vanish");
+  	else if(p.removeScoreboardTag(Fly.FLY_PERSIST_TAG)) {
+  		p.setAllowFlight(true);
+  		p.setFlying(true);
+  	}
+  	
   	p.setViewDistance(ViewDistance.viewDistance);
     
   	if(!p.hasPermission(Vanish.PEX_SEE_VANISHED)) {
