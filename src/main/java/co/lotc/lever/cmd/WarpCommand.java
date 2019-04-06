@@ -1,12 +1,5 @@
 package co.lotc.lever.cmd;
 
-import static org.bukkit.ChatColor.*;
-
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.math.NumberUtils;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-
 import co.lotc.core.command.annotate.Arg;
 import co.lotc.core.command.annotate.Cmd;
 import co.lotc.core.command.annotate.Default;
@@ -14,12 +7,19 @@ import co.lotc.core.command.annotate.Range;
 import co.lotc.lever.BaseCommand;
 import co.lotc.lever.Warp;
 import lombok.var;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.math.NumberUtils;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+
+import static org.bukkit.ChatColor.AQUA;
+import static org.bukkit.ChatColor.WHITE;
 
 public class WarpCommand extends BaseCommand {
 
-	public void invoke(Player p, Warp warp) {
+	public void invoke(Player p, Warp warp, @Default("@p") Player target) {
 		validate(p.hasPermission("lever.warp."+warp.getName()), "You do not have permission!");
-		warp.teleport(p);
+		warp.teleport(target);
 	}
 	
 	@Cmd("List the currently defined warps")
