@@ -49,7 +49,7 @@ public class LeverListener implements Listener {
 
   	if(Walk.isWalking(p)) Walk.disableWalk(p);
   	if(Vanish.VANISHED.contains(u)) {
-  		p.setAllowFlight(false);
+  		Vanish.persist(p);
   		Vanish.deactivate(p);
   	}
   }
@@ -73,6 +73,9 @@ public class LeverListener implements Listener {
   public void onJoin(PlayerJoinEvent event) {
   	Player p = event.getPlayer();
     
+  	if(p.removeScoreboardTag(Vanish.VANISH_PERSIST_TAG))
+  		p.performCommand("vanish");
+  	
   	p.setViewDistance(ViewDistance.viewDistance);
     
   	if(!p.hasPermission(Vanish.PEX_SEE_VANISHED)) {

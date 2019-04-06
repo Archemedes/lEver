@@ -18,8 +18,18 @@ import co.lotc.lever.Lever;
 
 public class Vanish extends BaseCommand {
 	public static final String PEX_SEE_VANISHED = "lever.vanish.cansee";
+	public static final String VANISH_PERSIST_TAG = "lever_vanished";
 	public static final Set<UUID> VANISHED = new HashSet<>();
 
+	public static boolean isVanished(Player p) {
+		return VANISHED.contains(p.getUniqueId());
+	}
+	
+	public static void persist(Player p) {
+		if(!isVanished(p)) return;
+		p.addScoreboardTag(VANISH_PERSIST_TAG);
+	}
+	
 	public void invoke(Player p) {
 		UUID u = p.getUniqueId();
 		if(VANISHED.contains(u)) {
@@ -30,7 +40,6 @@ public class Vanish extends BaseCommand {
 			VANISHED.add(u);
 			p.setInvulnerable(true);
 			p.setAllowFlight(true);
-			p.setGlowing(true);
 			msg(GREEN + "You are now invisible!");
 		}
 	}
@@ -52,8 +61,8 @@ public class Vanish extends BaseCommand {
 	public static void deactivate(Player p) {
 		Bukkit.getOnlinePlayers().stream().filter(x->x!=p).forEach(x->x.showPlayer(Lever.get(), p));
 		VANISHED.remove(p.getUniqueId());
-		p.setGlowing(false);
 		p.setInvulnerable(false);
+		p.setAllowFlight(false);
 	}
 	
 	public static void maybeHide(Player who, Player from) {
