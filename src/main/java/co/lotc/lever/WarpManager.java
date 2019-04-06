@@ -65,6 +65,11 @@ public class WarpManager {
 		
 		return result;
 	}
+
+	public Warp getWarp(String warpName) {
+		return warps.get(warpName);
+	}
+
 	
 	
 }

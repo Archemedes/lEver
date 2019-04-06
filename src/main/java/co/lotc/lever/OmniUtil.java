@@ -14,7 +14,7 @@ public class OmniUtil {
 		OmniApi.registerEvent("trash", "trashed");
 	}
 	
-	static void logItem(HumanEntity player, ItemStack is) {
+	public static void logItem(HumanEntity player, ItemStack is) {
 		DataWrapper wrapper = DataWrapper.createNew();
 		wrapper.set(DataKeys.ITEMSTACK, is);
 		wrapper.set(DataKeys.TARGET, is.getType().toString());

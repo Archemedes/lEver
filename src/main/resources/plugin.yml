@@ -73,5 +73,6 @@ permissions:
   lever.vanish.persist:
     description: vanish persists through logouts and restarts
   lever.fly.persist:  
-    description: fly persists through logouts and restarts   
- 
+    description: fly persists through logouts and restarts
+  lever.warpsign:
+    description: Allows creation of warp signs

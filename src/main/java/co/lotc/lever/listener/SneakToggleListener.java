@@ -1,9 +1,10 @@
-package co.lotc.lever;
+package co.lotc.lever.listener;
 
-import static net.md_5.bungee.api.ChatColor.GREEN;
-
-import java.util.List;
-
+import co.lotc.core.bukkit.util.Run;
+import co.lotc.lever.Lever;
+import co.lotc.lever.cmd.Vanish;
+import com.google.common.collect.Lists;
+import lombok.RequiredArgsConstructor;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -11,11 +12,9 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
 
-import com.google.common.collect.Lists;
+import java.util.List;
 
-import co.lotc.core.bukkit.util.Run;
-import co.lotc.lever.cmd.Vanish;
-import lombok.RequiredArgsConstructor;
+import static net.md_5.bungee.api.ChatColor.GREEN;
 
 @RequiredArgsConstructor
 public class SneakToggleListener implements Listener {
