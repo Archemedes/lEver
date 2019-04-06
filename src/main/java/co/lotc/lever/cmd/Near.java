@@ -25,7 +25,7 @@ public class Near extends BaseCommand {
 		.map(Player::getName)
 		.collect(Collectors.toList());
 		
-		new ChatBuilder("Players nearby: (" + radius + ")").color(GOLD).append( nears.size()).color(WHITE).send(p);
+		new ChatBuilder("Players nearby: (" + radius + "): ").color(GOLD).append( nears.size()).color(WHITE).send(p);
 		String formatted = GRAY + StringUtils.join(nears, WHITE+", "+GRAY);
 		p.sendMessage(formatted);
 	}

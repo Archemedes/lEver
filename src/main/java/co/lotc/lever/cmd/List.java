@@ -1,18 +1,17 @@
 package co.lotc.lever.cmd;
 
-import static net.md_5.bungee.api.ChatColor.*;
-
-import java.util.stream.Collectors;
-
+import co.lotc.core.bukkit.util.ChatBuilder;
+import co.lotc.core.command.annotate.Flag;
+import co.lotc.lever.BaseCommand;
+import lombok.var;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import co.lotc.core.bukkit.util.ChatBuilder;
-import co.lotc.core.command.annotate.Flag;
-import co.lotc.lever.BaseCommand;
-import lombok.var;
+import java.util.stream.Collectors;
+
+import static net.md_5.bungee.api.ChatColor.*;
 
 public class List extends BaseCommand{
 
@@ -23,7 +22,7 @@ public class List extends BaseCommand{
 				.map(Player::getName)
 				.collect(Collectors.toList());
 			
-		new ChatBuilder("there are currently ").color(DARK_AQUA)
+		new ChatBuilder("There are currently ").color(DARK_AQUA)
 		.append(on.size()).color(GOLD)
 		.append(" players online.").color(DARK_AQUA)
 		.send(sender);
