@@ -11,6 +11,7 @@ import co.lotc.core.command.annotate.Default;
 import co.lotc.lever.BaseCommand;
 
 public class Fly extends BaseCommand {
+	public static final String FLY_PERSIST_TAG = "lever_flying";
 	
 	public void invoke(CommandSender s, @Default("@p") Player target) {
 		target.setAllowFlight(!target.getAllowFlight());

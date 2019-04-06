@@ -22,6 +22,7 @@ import co.lotc.core.bukkit.util.Run;
 import co.lotc.core.bukkit.util.WeakBlock;
 import co.lotc.lever.Lever.StaticInventory;
 import co.lotc.lever.cmd.Back;
+import co.lotc.lever.cmd.Fly;
 import co.lotc.lever.cmd.Impersonate;
 import co.lotc.lever.cmd.InvSearch;
 import co.lotc.lever.cmd.Trash;
@@ -51,6 +52,8 @@ public class LeverListener implements Listener {
   	if(Vanish.VANISHED.contains(u)) {
   		Vanish.persist(p);
   		Vanish.deactivate(p);
+  	} else if(p.getAllowFlight() && p.isFlying()) {
+  		p.addScoreboardTag(Fly.FLY_PERSIST_TAG);
   	}
   }
   
@@ -75,6 +78,10 @@ public class LeverListener implements Listener {
     
   	if(p.removeScoreboardTag(Vanish.VANISH_PERSIST_TAG))
   		p.performCommand("vanish");
+  	else if(p.removeScoreboardTag(Fly.FLY_PERSIST_TAG)) {
+  		p.setAllowFlight(true);
+  		p.setFlying(true);
+  	}
   	
   	p.setViewDistance(ViewDistance.viewDistance);
     

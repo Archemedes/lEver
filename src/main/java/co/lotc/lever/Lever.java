@@ -84,7 +84,10 @@ public class Lever extends JavaPlugin {
 		for(Player p : Bukkit.getOnlinePlayers()) {
 			if(p.removeScoreboardTag(Vanish.VANISH_PERSIST_TAG)) {
 				p.performCommand("vanish");
-			}
+			}else if(p.removeScoreboardTag(Fly.FLY_PERSIST_TAG)) {
+	  		p.setAllowFlight(true);
+	  		p.setFlying(true);
+	  	}
 		}
 	}
 	
