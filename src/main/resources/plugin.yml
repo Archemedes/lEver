@@ -66,3 +66,12 @@ commands:
   impersonate:
     description: impersonate another player
     permission: lever.impersonate
+    
+permissions:
+  lever.vanish.cansee:
+    description: Can see vanished players as normal
+  lever.vanish.persist:
+    description: vanish persists through logouts and restarts
+  lever.fly.persist:  
+    description: fly persists through logouts and restarts   
+ 

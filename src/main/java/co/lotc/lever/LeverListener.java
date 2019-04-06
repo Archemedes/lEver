@@ -50,9 +50,9 @@ public class LeverListener implements Listener {
 
   	if(Walk.isWalking(p)) Walk.disableWalk(p);
   	if(Vanish.VANISHED.contains(u)) {
-  		Vanish.persist(p);
+  		if(p.hasPermission("lever.vanish.persist")) Vanish.persist(p);
   		Vanish.deactivate(p);
-  	} else if(p.getAllowFlight() && p.isFlying()) {
+  	} else if(p.getAllowFlight() && p.isFlying() && p.hasPermission("lever.fly.persist")) {
   		p.addScoreboardTag(Fly.FLY_PERSIST_TAG);
   	}
   }
