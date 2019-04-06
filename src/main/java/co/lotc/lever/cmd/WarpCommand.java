@@ -20,7 +20,7 @@ public class WarpCommand extends BaseCommand {
 	public void invoke(Player p, Warp warp, @Default("@p") Player target) {
 		validate(p.hasPermission("lever.warp."+warp.getName()), "You do not have permission!");
 		warp.teleport(target);
-		p.sendMessage(AQUA + "Warped to " + WHITE + warp.getName());
+		target.sendMessage(AQUA + "Warped to " + WHITE + warp.getName());
 		if (p != target) {
 			p.sendMessage(target.getName() + AQUA + " has been warped to " + WHITE + warp.getName());
 		}
