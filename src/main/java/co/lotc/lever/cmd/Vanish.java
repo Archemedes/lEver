@@ -40,6 +40,7 @@ public class Vanish extends BaseCommand {
 			VANISHED.add(u);
 			p.setInvulnerable(true);
 			p.setAllowFlight(true);
+			p.setGlowing(true);
 			msg(GREEN + "You are now invisible!");
 		}
 	}
@@ -63,6 +64,7 @@ public class Vanish extends BaseCommand {
 		VANISHED.remove(p.getUniqueId());
 		p.setInvulnerable(false);
 		p.setAllowFlight(false);
+		p.setGlowing(false);
 	}
 	
 	public static void maybeHide(Player who, Player from) {
