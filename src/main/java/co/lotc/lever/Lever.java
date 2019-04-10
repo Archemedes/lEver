@@ -61,8 +61,6 @@ public class Lever extends JavaPlugin {
 		command("horsestats", HorseStats::new);
 		command("trash", Trash::new);
 		command("showitem", ShowItem::new);
-		command("skull", Skull::new);
-		command("top", Top::new);
 		//command("impersonate", Impersonate::new);
 		
 		Run.as(this).repeating(61L, ()->Vanish.VANISHED.stream().map(Bukkit::getPlayer).filter(Objects::nonNull)

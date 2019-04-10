@@ -66,12 +66,6 @@ commands:
   impersonate:
     description: impersonate another player
     permission: lever.impersonate
-  top:
-    description: Brings you to the top most block
-    permisison: lever.top
-  skull:
-    description: Sets a player skull
-    permission: lever.skull
 permissions:
   lever.vanish.cansee:
     description: Can see vanished players as normal
