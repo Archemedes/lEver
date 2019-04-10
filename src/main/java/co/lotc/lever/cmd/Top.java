@@ -7,7 +7,7 @@ import static net.md_5.bungee.api.ChatColor.AQUA;
 
 public class Top extends BaseCommand {
 
-	void invoke(Player player) {
+	public void invoke(Player player) {
 		player.teleportAsync(player.getWorld().getHighestBlockAt(player.getLocation()).getLocation());
 		player.sendMessage(AQUA + "Teleported to the top block!");
 	}

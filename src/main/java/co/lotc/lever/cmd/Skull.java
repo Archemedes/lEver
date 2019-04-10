@@ -12,11 +12,14 @@ import static net.md_5.bungee.api.ChatColor.WHITE;
 
 public class Skull extends BaseCommand {
 
-	void invoke(Player player, String playerName) {
+	public void invoke(Player player, String playerName) {
 		validate(player.getInventory().getItemInMainHand().getType() == Material.PLAYER_HEAD, "You need to be holding a player head");
 		ItemStack item = player.getInventory().getItemInMainHand();
 		SkullMeta skullMeta = (SkullMeta) item.getItemMeta();
 		skullMeta.setOwningPlayer(Bukkit.getOfflinePlayer(playerName));
+		skullMeta.setDisplayName(skullMeta.getOwningPlayer().getName() + "'s skull");
+		item.setItemMeta(skullMeta);
+
 		player.sendMessage(AQUA + "Skull head owner set to " + WHITE + playerName);
 	}
 }
