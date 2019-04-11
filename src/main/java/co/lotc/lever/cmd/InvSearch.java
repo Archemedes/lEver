@@ -24,6 +24,7 @@ public class InvSearch extends BaseCommand {
 
 	public void invoke(Persona me, Persona you) {
 		validate(LocationUtil.isClose(me.getPlayer(), you.getPlayer()), "That Player is too far away!");
+		validate(me != you, "You can't search your own inventory");
 		msg("%sSending a request to search the player's inventory.", BLUE);
 		requests.put(me.getPlayerUUID(), you.getPlayerUUID());
 		you.getPlayer().sendMessage(me.getPlayerName() + BLUE + " requests to search your inventory.");
