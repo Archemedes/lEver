@@ -1,6 +1,12 @@
 package co.lotc.lever.cmd;
 
-import static org.bukkit.ChatColor.*;
+import co.lotc.core.command.annotate.Cmd;
+import co.lotc.lever.BaseCommand;
+import co.lotc.lever.Lever;
+import org.apache.commons.lang.StringUtils;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+import org.bukkit.metadata.FixedMetadataValue;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -8,13 +14,7 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-import org.apache.commons.lang.StringUtils;
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
-
-import co.lotc.core.command.annotate.Cmd;
-import co.lotc.lever.BaseCommand;
-import co.lotc.lever.Lever;
+import static org.bukkit.ChatColor.*;
 
 public class Vanish extends BaseCommand {
 	public static final String PEX_SEE_VANISHED = "lever.vanish.cansee";
@@ -41,6 +41,7 @@ public class Vanish extends BaseCommand {
 			p.setInvulnerable(true);
 			p.setAllowFlight(true);
 			p.setGlowing(true);
+			p.setMetadata("vanished", new FixedMetadataValue(plugin, true));
 			msg(GREEN + "You are now invisible!");
 		}
 	}
@@ -65,6 +66,7 @@ public class Vanish extends BaseCommand {
 		p.setInvulnerable(false);
 		p.setAllowFlight(false);
 		p.setGlowing(false);
+		p.removeMetadata("vanished", Lever.get());
 	}
 	
 	public static void maybeHide(Player who, Player from) {
