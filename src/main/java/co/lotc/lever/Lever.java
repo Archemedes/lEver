@@ -46,7 +46,7 @@ public class Lever extends JavaPlugin {
 		command("list", List::new);
 		command("near", Near::new);
 		command("roll", Roll::new);
-		command("invsearch", InvSearch::new);
+		//command("invsearch", InvSearch::new);
 		command("warp", WarpCommand::new);
 		command("item", Item::new);
 		command("changematerial", ChangeMaterial::new);
