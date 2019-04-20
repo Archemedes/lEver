@@ -3,7 +3,7 @@ main: co.lotc.lever.Lever
 version: ${project.version}
 author: Sporadic
 depend: [ArcheCore]
-soft-depend: [Omniscience]
+softdepend:  [Omniscience]
 api-version: 1.13
 
 commands:
