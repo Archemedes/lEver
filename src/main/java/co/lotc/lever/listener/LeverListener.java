@@ -1,35 +1,59 @@
 package co.lotc.lever.listener;
 
-import co.lotc.core.bukkit.util.Run;
-import co.lotc.core.bukkit.util.WeakBlock;
-import co.lotc.lever.Lever;
-import co.lotc.lever.Lever.StaticInventory;
-import co.lotc.lever.OmniUtil;
-import co.lotc.lever.cmd.*;
-import lombok.var;
+import java.util.Objects;
+import java.util.UUID;
+import java.util.stream.Stream;
+
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityTargetLivingEntityEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.inventory.InventoryInteractEvent;
-import org.bukkit.event.player.*;
+import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.player.PlayerTeleportEvent;
+import org.bukkit.event.player.PlayerToggleSprintEvent;
 
-import java.util.Objects;
-import java.util.UUID;
-import java.util.stream.Stream;
+import co.lotc.core.bukkit.util.Run;
+import co.lotc.core.bukkit.util.WeakBlock;
+import co.lotc.lever.Lever;
+import co.lotc.lever.Lever.StaticInventory;
+import co.lotc.lever.OmniUtil;
+import co.lotc.lever.cmd.Back;
+import co.lotc.lever.cmd.Fly;
+import co.lotc.lever.cmd.Impersonate;
+import co.lotc.lever.cmd.InvSearch;
+import co.lotc.lever.cmd.Trash;
+import co.lotc.lever.cmd.Vanish;
+import co.lotc.lever.cmd.ViewDistance;
+import co.lotc.lever.cmd.Walk;
+import lombok.var;
 
 public class LeverListener implements Listener {
 
-  @EventHandler
-  public void onInvclick(final InventoryInteractEvent e) {
-      if (e.getInventory().getHolder() instanceof StaticInventory) {
-          Run.as(Lever.get()).sync(()->e.getInventory().getViewers().get(0).closeInventory());
-          e.setCancelled(true);
-      }
-  }
+	@EventHandler
+	public void handle(InventoryClickEvent e) {
+		inv(e);
+	}
+	
+	@EventHandler
+	public void handle(InventoryDragEvent e) {
+		inv(e);
+	}
+	
+	public void inv(InventoryInteractEvent e) {
+		System.out.println(e.getInventory().getHolder());
+		if (e.getInventory().getHolder() instanceof StaticInventory) {
+			Run.as(Lever.get()).sync(()->e.getInventory().getViewers().get(0).closeInventory());
+			e.setCancelled(true);
+		}
+	}
   
   @EventHandler
   public void onLog(final PlayerQuitEvent e) {
