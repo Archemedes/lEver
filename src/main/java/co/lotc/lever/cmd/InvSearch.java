@@ -28,7 +28,11 @@ public class InvSearch extends BaseCommand {
 		msg("%sSending a request to search the player's inventory.", BLUE);
 		requests.put(me.getPlayerUUID(), you.getPlayerUUID());
 		you.getPlayer().sendMessage(me.getPlayerName() + BLUE + " requests to search your inventory.");
-		you.getPlayer().sendMessage(Tythan.get().chatBuilder().appendButton(GREEN + "[Allow]", "/invsearch accept").appendButton(RED + " [Deny]", "/invsearch deny").build());
+		you.getPlayer().sendMessage(Tythan.get().chatBuilder()
+				.appendButton(GREEN + "Allow", "/invsearch accept")
+				.append(' ')
+				.appendButton(RED + "Deny", "/invsearch deny").build()
+				);
 
 		Run.as(plugin).delayed(400,()->requests.remove(me.getPlayerUUID()));
 	}
