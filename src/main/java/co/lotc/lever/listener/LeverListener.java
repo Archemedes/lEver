@@ -48,7 +48,6 @@ public class LeverListener implements Listener {
 	}
 	
 	public void inv(InventoryInteractEvent e) {
-		System.out.println(e.getInventory().getHolder());
 		if (e.getInventory().getHolder() instanceof StaticInventory) {
 			Run.as(Lever.get()).sync(()->e.getInventory().getViewers().get(0).closeInventory());
 			e.setCancelled(true);
