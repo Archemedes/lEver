@@ -58,15 +58,20 @@ public class Roll extends BaseCommand {
 		result[0] = result[1] = multiplier;
 		
 		if(input.matches("[0-9]+")) {
-			result[0] = result[1] = multiplier*Ints.tryParse(input);
-		} else if(input.matches("\\d+d\\d+")) {
+			Integer faces = Ints.tryParse(input);
+			overflow(faces);
+			result[0] = result[1] = multiplier*faces;
+		} else if(input.matches("[0-9]+d[0-9]+")) {
 			String[] hmm = input.split("d");
-			int dice = Ints.tryParse(hmm[0]);
-			int faces = Ints.tryParse(hmm[1]);
+			Integer dice = Ints.tryParse(hmm[0]);
+			Integer faces = Ints.tryParse(hmm[1]);
+			overflow(dice);
+			overflow(faces);
 			result[0] *= dice * faces;
 			result[1] *= ThreadLocalRandom.current().ints(dice, 1, faces+1).sum();
 		} else if(input.matches("d\\d+")) {
 			int faces = Ints.tryParse(input.substring(1));
+			overflow(faces);
 			result[0] *= faces;
 			result[1] *= ThreadLocalRandom.current().nextInt(1, faces+1);
 		} else {
@@ -75,4 +80,9 @@ public class Roll extends BaseCommand {
 		
 		return result;
 	}
+	
+	private void overflow(Integer i) {
+		validate(i!=null, "Number too high!");
+	}
+	
 }
