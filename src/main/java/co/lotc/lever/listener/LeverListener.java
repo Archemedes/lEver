@@ -1,9 +1,12 @@
 package co.lotc.lever.listener;
 
-import java.util.Objects;
-import java.util.UUID;
-import java.util.stream.Stream;
-
+import co.lotc.core.bukkit.util.Run;
+import co.lotc.core.bukkit.util.WeakBlock;
+import co.lotc.lever.Lever;
+import co.lotc.lever.Lever.StaticInventory;
+import co.lotc.lever.OmniUtil;
+import co.lotc.lever.cmd.*;
+import lombok.var;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -14,26 +17,11 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.inventory.InventoryInteractEvent;
-import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.event.player.PlayerTeleportEvent;
-import org.bukkit.event.player.PlayerToggleSprintEvent;
+import org.bukkit.event.player.*;
 
-import co.lotc.core.bukkit.util.Run;
-import co.lotc.core.bukkit.util.WeakBlock;
-import co.lotc.lever.Lever;
-import co.lotc.lever.Lever.StaticInventory;
-import co.lotc.lever.OmniUtil;
-import co.lotc.lever.cmd.Back;
-import co.lotc.lever.cmd.Fly;
-import co.lotc.lever.cmd.Impersonate;
-import co.lotc.lever.cmd.InvSearch;
-import co.lotc.lever.cmd.Trash;
-import co.lotc.lever.cmd.Vanish;
-import co.lotc.lever.cmd.ViewDistance;
-import co.lotc.lever.cmd.Walk;
-import lombok.var;
+import java.util.Objects;
+import java.util.UUID;
+import java.util.stream.Stream;
 
 public class LeverListener implements Listener {
 
@@ -96,7 +84,7 @@ public class LeverListener implements Listener {
   		p.setFlying(true);
   	}
   	
-  	p.setViewDistance(ViewDistance.viewDistance);
+  	Run.as(Lever.get()).delayed(10, () -> p.setViewDistance(ViewDistance.viewDistance));
     
   	if(!p.hasPermission(Vanish.PEX_SEE_VANISHED)) {
 	  		Vanish.VANISHED.stream()
