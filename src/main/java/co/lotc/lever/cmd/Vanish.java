@@ -18,6 +18,9 @@ import static org.bukkit.ChatColor.*;
 
 public class Vanish extends BaseCommand {
 	public static final String PEX_SEE_VANISHED = "lever.vanish.cansee";
+	public static final String PEX_SUPERVANISH = "lever.vanish.elevated";
+	public static final String PEX_ADMINVANISH = "lever.vanish.admin";
+	
 	public static final String VANISH_PERSIST_TAG = "lever_vanished";
 	public static final Set<UUID> VANISHED = new HashSet<>();
 
@@ -71,8 +74,11 @@ public class Vanish extends BaseCommand {
 	
 	public static void maybeHide(Player who, Player from) {
 		if(who == from) return;
-		if(!from.hasPermission(PEX_SEE_VANISHED)) {
-			from.hidePlayer(Lever.get(), who);
-		}
+		if(shouldHide(who, from)) from.hidePlayer(Lever.get(), who);
+		
+	}
+	
+	public static boolean shouldHide(Player who, Player from) {
+		return who.hasPermission(PEX_ADMINVANISH) || !from.hasPermission(PEX_SEE_VANISHED) || (who.hasPermission(PEX_SUPERVANISH) && !from.hasPermission(PEX_SUPERVANISH));
 	}
 }

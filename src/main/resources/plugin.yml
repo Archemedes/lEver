@@ -71,6 +71,10 @@ permissions:
     description: Can see vanished players as normal
   lever.vanish.persist:
     description: vanish persists through logouts and restarts
+  lever.vanish.elevated:
+    description: Vanish that can't be seen except by others with this node AND lever.vanish.cansee
+  lever.vanish.admin:
+    description: Vanish that can never be seen
   lever.fly.persist:  
     description: fly persists through logouts and restarts
   lever.warpsign:

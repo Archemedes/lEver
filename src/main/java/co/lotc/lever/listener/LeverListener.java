@@ -86,12 +86,11 @@ public class LeverListener implements Listener {
   	
   	Run.as(Lever.get()).delayed(10, () -> p.setViewDistance(ViewDistance.viewDistance));
     
-  	if(!p.hasPermission(Vanish.PEX_SEE_VANISHED)) {
-	  		Vanish.VANISHED.stream()
-	  		.map(Bukkit::getPlayer)
-	  		.filter(Objects::nonNull)
-	  		.forEach(x->p.hidePlayer(Lever.get(), x));
-  	}
+  	Vanish.VANISHED.stream()
+  	.map(Bukkit::getPlayer)
+  	.filter(Objects::nonNull)
+  	.filter(who->Vanish.shouldHide(who, p))
+  	.forEach(x->p.hidePlayer(Lever.get(), x));
   }
   
   @EventHandler
