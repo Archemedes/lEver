@@ -79,3 +79,5 @@ permissions:
     description: fly persists through logouts and restarts
   lever.warpsign:
     description: Allows creation of warp signs
+  lever.countdown.radius:
+    description: Allows the broadcast radius of countdowns to be set
