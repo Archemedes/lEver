@@ -2,6 +2,7 @@ package co.lotc.lever.cmd;
 
 import static org.bukkit.ChatColor.*;
 
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -18,9 +19,12 @@ public class ShowItem extends BaseCommand {
 		validate(LocationUtil.isClose(source.getPlayer(), target, 16), "Can only show items to nearby players!");
 		ChatBuilder b = new ChatBuilder(source.getName()).color(GOLD)
 				.append(" is showing you ").color(AQUA)
-				.append('[' + ItemUtil.getDisplayName(is) + ']').color(WHITE).hoverItem(is);
-		
-		b.send(target);
+				.append('[').color(WHITE)
+				.append(TextComponent.fromLegacyText(ItemUtil.getDisplayName(is))).hoverItem(is)
+				.append(']').color(WHITE);
+
+
 		msg("Showing held item to " + target.getName());
+		b.send(target);
 	}
 }
