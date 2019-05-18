@@ -8,8 +8,8 @@ import java.util.List;
 
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 
 import co.lotc.core.bukkit.util.ChatBuilder;
@@ -38,11 +38,11 @@ public class MobProximity extends BaseCommand {
 		World w = p.getWorld();
 		var mobs = new ArrayList<MobPack>();
 
-		for(LivingEntity e : w.getLivingEntities()) {
+		for(Entity e : w.getEntities()) {
 			if (type != e.getType())
 				continue;
 			MobPack pack = new MobPack(e.getLocation(), 1);
-			for (LivingEntity e2 : w.getLivingEntities())
+			for (Entity e2 : w.getEntities())
 				if (type == e2.getType() && e != e2 && withinDistance(pack.loc, e2.getLocation(), range))
 					pack.num++;
 			if (pack.num >= alert)
