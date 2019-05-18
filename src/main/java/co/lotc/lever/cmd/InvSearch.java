@@ -42,8 +42,7 @@ public class InvSearch extends BaseCommand {
 		validate(requests.containsValue(me.getPlayerUUID()), "You have no pending requests");
 				
 		final Economy econ = ArcheCore.getControls().getEconomy();
-    final boolean flag = econ != null;
-    final String title = flag ? (econ.currencyNamePlural() + ": " + GREEN + econ.getBalance(me)) : "Searched Possessions";
+    final String title = econ != null ? (econ.currencyNamePlural() + ": " + GREEN + econ.getBalance(me)) : "Searched Possessions";
 		
 		var iter = requests.entrySet().iterator();
 		while(iter.hasNext()) {
