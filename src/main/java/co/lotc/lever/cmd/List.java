@@ -16,7 +16,7 @@ import static net.md_5.bungee.api.ChatColor.*;
 public class List extends BaseCommand{
 
 	
-	@Flag(name="names", permission="lever.list.names", description="also print the names of ")
+	@Flag(name="names", permission="lever.list.names", description="also print the names of players")
 	public void invoke(CommandSender sender) {
 		var on = Bukkit.getOnlinePlayers().stream()
 				.map(Player::getName)

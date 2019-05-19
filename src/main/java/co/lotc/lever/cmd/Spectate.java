@@ -17,7 +17,7 @@ import com.comphenix.protocol.events.PacketContainer;
 
 import co.lotc.core.bukkit.util.Run;
 import co.lotc.core.command.annotate.Cmd;
-import co.lotc.core.command.annotate.Flag;
+import co.lotc.core.command.annotate.Default;
 import co.lotc.lever.BaseCommand;
 import co.lotc.lever.Lever;
 import lombok.SneakyThrows;
@@ -25,11 +25,8 @@ import lombok.val;
 
 public class Spectate extends BaseCommand {
 
-	@Flag(name = "t", description="Specify a player to spectate", type=Player.class)
-	public void invoke(Player p) {
-		if(hasFlag("t")) {
-			p.setGameMode(GameMode.SPECTATOR);
-			Player you = getFlag("t");
+	public void invoke(Player p, @Default("@s") Player you) {
+		if(p != you) {
 			p.teleport(you);
 			Run.as(Lever.get()).delayed(2, ()->p.setSpectatorTarget(you));
 			Run.as(Lever.get()).delayed(6, ()->sendCameraPacket(p, you));

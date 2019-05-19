@@ -79,3 +79,5 @@ permissions:
     description: fly persists through logouts and restarts
   lever.warpsign:
     description: Allows creation of warp signs
+  lever.list.names:
+    description: Prints player names in the /list command
