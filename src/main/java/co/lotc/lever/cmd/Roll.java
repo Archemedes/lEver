@@ -1,19 +1,18 @@
  package co.lotc.lever.cmd;
 
-import static org.bukkit.ChatColor.*;
-
-import java.util.concurrent.ThreadLocalRandom;
-
-import org.apache.commons.lang.math.NumberUtils;
-import org.bukkit.Bukkit;
-
-import com.google.common.primitives.Ints;
-
 import co.lotc.core.bukkit.util.LocationUtil;
 import co.lotc.core.command.annotate.Arg;
 import co.lotc.core.command.annotate.Default;
 import co.lotc.lever.BaseCommand;
+import com.google.common.primitives.Ints;
 import net.lordofthecraft.arche.interfaces.Persona;
+import org.apache.commons.lang.math.NumberUtils;
+import org.bukkit.Bukkit;
+
+import java.util.concurrent.ThreadLocalRandom;
+
+import static org.bukkit.ChatColor.DARK_AQUA;
+import static org.bukkit.ChatColor.GRAY;
 
 public class Roll extends BaseCommand {
 	private static final int BROADCAST_RADIUS = 24;
@@ -83,6 +82,7 @@ public class Roll extends BaseCommand {
 	
 	private void overflow(Integer i) {
 		validate(i!=null, "Number too high!");
+		validate(i != 0, "Number can not be 0");
 	}
 	
 }
