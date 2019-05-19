@@ -27,6 +27,7 @@ public class Spectate extends BaseCommand {
 
 	public void invoke(Player p, @Default("@s") Player you) {
 		if(p != you) {
+			p.setGameMode(GameMode.SPECTATOR);
 			p.teleport(you);
 			Run.as(Lever.get()).delayed(2, ()->p.setSpectatorTarget(you));
 			Run.as(Lever.get()).delayed(6, ()->sendCameraPacket(p, you));
