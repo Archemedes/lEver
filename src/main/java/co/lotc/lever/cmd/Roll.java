@@ -18,7 +18,7 @@ public class Roll extends BaseCommand {
 	private static final int BROADCAST_RADIUS = 24;
 	
 	public void invoke(Persona ps, @Default("20") @Arg("Dice")String rollString) {
-		validate(rollString.matches("[0-9d\\+-]+"), "Could not understand the dice you're trying to roll");
+		validate(rollString.matches("[0-9d+-]+"), "Could not understand the dice you're trying to roll");
 		String input = rollString;
 		rollString = rollString.replace("-", "+-");
 		String[] dice = rollString.split("\\+");
@@ -58,19 +58,19 @@ public class Roll extends BaseCommand {
 		
 		if(input.matches("[0-9]+")) {
 			Integer faces = Ints.tryParse(input);
-			overflow(faces);
+			validate(faces);
 			result[0] = result[1] = multiplier*faces;
 		} else if(input.matches("[0-9]+d[0-9]+")) {
 			String[] hmm = input.split("d");
 			Integer dice = Ints.tryParse(hmm[0]);
 			Integer faces = Ints.tryParse(hmm[1]);
-			overflow(dice);
-			overflow(faces);
+			validate(dice);
+			validate(faces);
 			result[0] *= dice * faces;
 			result[1] *= ThreadLocalRandom.current().ints(dice, 1, faces+1).sum();
 		} else if(input.matches("d\\d+")) {
 			int faces = Ints.tryParse(input.substring(1));
-			overflow(faces);
+			validate(faces);
 			result[0] *= faces;
 			result[1] *= ThreadLocalRandom.current().nextInt(1, faces+1);
 		} else {
@@ -80,7 +80,7 @@ public class Roll extends BaseCommand {
 		return result;
 	}
 	
-	private void overflow(Integer i) {
+	private void validate(Integer i) {
 		validate(i!=null, "Number too high!");
 		validate(i != 0, "Number can not be 0");
 	}
