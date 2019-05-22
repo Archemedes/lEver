@@ -85,5 +85,7 @@ permissions:
     description: Fly persists through logouts and restarts
   lever.warpsign:
     description: Allows creation of warp signs
+  lever.list.names:
+    description: Prints player names in the /list command
   lever.countdown.radius:
     description: Allows the broadcast radius of countdowns to be set
