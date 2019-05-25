@@ -31,6 +31,9 @@ commands:
   fly:
     description: toggle flight
     permission: lever.fly
+  speed:
+    description: Adjust walking or flying speed
+    permission: lever.speed
   i:
     description: Spawn an item
     permission: lever.item
