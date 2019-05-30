@@ -15,7 +15,7 @@ import static org.bukkit.ChatColor.DARK_AQUA;
 import static org.bukkit.ChatColor.GRAY;
 
 public class Roll extends BaseCommand {
-	private static final int BROADCAST_RADIUS = 24;
+	private static final int BROADCAST_RADIUS = 20;
 	
 	public void invoke(Persona ps, @Default("20") @Arg("Dice")String rollString) {
 		validate(rollString.matches("[0-9d+-]+"), "Could not understand the dice you're trying to roll");

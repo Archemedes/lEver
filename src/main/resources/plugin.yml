@@ -8,10 +8,10 @@ api-version: 1.13
 
 commands:
   list:
-    description: list online players
+    description: List online players
     permission: lever.list
   near:
-    description: Show all the players nearby you
+    description: Show all the players nearby
     permission: lever.near
   warp:
     description: Teleport to a pre-defined location
@@ -23,13 +23,13 @@ commands:
     description: Roll an amount of dice
     permission: lever.roll
   sneak:
-    description: toggle sneak
+    description: Toggle sneak
     permission: lever.sneak
   walk:
     description: Sets your speed to walking
     permission: lever.walk
   fly:
-    description: toggle flight
+    description: Toggle flight
     permission: lever.fly
   speed:
     description: Adjust walking or flying speed
@@ -58,29 +58,37 @@ commands:
     description: Checks for proximity of mobs
     permission: lever.mobproximity
   horsestats:
-    description: Check speed of the horse you are riding
+    description: Check the speed of the horse you're riding
     permission: lever.horsestats
   trash:
-    description: open an inventory to dispose of unwanted items
+    description: Open an inventory to dispose of unwanted items
     permission: lever.trash
   showitem:
-    description: show item in hand to player
+    description: Show held item to another player
     permission: lever.showitem
   impersonate:
-    description: impersonate another player
+    description: Impersonate another player
     permission: lever.impersonate
+  countdown:
+    description: Start a PvP countdown
+    permission: lever.countdown
+  emote:
+    description: Broadcast an emote to nearby players
+    permission: lever.emote
 permissions:
   lever.vanish.cansee:
     description: Can see vanished players as normal
   lever.vanish.persist:
-    description: vanish persists through logouts and restarts
+    description: Vanish persists through logouts and restarts
   lever.vanish.elevated:
     description: Vanish that can't be seen except by others with this node AND lever.vanish.cansee
   lever.vanish.admin:
     description: Vanish that can never be seen
   lever.fly.persist:  
-    description: fly persists through logouts and restarts
+    description: Fly persists through logouts and restarts
   lever.warpsign:
     description: Allows creation of warp signs
   lever.list.names:
     description: Prints player names in the /list command
+  lever.countdown.radius:
+    description: Allows the broadcast radius of countdowns to be set
