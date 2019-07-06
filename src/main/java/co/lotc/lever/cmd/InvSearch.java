@@ -1,5 +1,14 @@
 package co.lotc.lever.cmd;
 
+import static org.bukkit.ChatColor.*;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+
 import co.lotc.core.Tythan;
 import co.lotc.core.bukkit.util.LocationUtil;
 import co.lotc.core.bukkit.util.Run;
@@ -10,14 +19,6 @@ import lombok.var;
 import net.lordofthecraft.arche.ArcheCore;
 import net.lordofthecraft.arche.interfaces.Economy;
 import net.lordofthecraft.arche.interfaces.Persona;
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
-
-import static org.bukkit.ChatColor.*;
 
 public class InvSearch extends BaseCommand {
 	public static Map<UUID, UUID> requests = new HashMap<>();
@@ -68,15 +69,15 @@ public class InvSearch extends BaseCommand {
 	}
 	
 	@Cmd("Accept the pending inventory search request")
-	public void deny(Persona me){
-		validate(requests.containsKey(me.getPlayerUUID()), "You have no pending requests");
+	public void deny(Player me){
+		validate(requests.containsKey(me.getUniqueId()), "You have no pending requests");
 		
 		msg(LIGHT_PURPLE + "You resist having your possessions searched");
 		
 		var iter = requests.entrySet().iterator();
 		while(iter.hasNext()) {
 			var ent = iter.next();
-			if(ent.getValue().equals(me.getPlayerUUID())) {
+			if(ent.getValue().equals(me.getUniqueId())) {
 				iter.remove();
 				Player you = Bukkit.getPlayer(ent.getKey());
 				if(you != null) {

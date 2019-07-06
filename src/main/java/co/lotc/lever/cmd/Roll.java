@@ -1,23 +1,24 @@
  package co.lotc.lever.cmd;
 
+import static org.bukkit.ChatColor.*;
+
+import java.util.concurrent.ThreadLocalRandom;
+
+import org.apache.commons.lang.math.NumberUtils;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+
+import com.google.common.primitives.Ints;
+
 import co.lotc.core.bukkit.util.LocationUtil;
 import co.lotc.core.command.annotate.Arg;
 import co.lotc.core.command.annotate.Default;
 import co.lotc.lever.BaseCommand;
-import com.google.common.primitives.Ints;
-import net.lordofthecraft.arche.interfaces.Persona;
-import org.apache.commons.lang.math.NumberUtils;
-import org.bukkit.Bukkit;
-
-import java.util.concurrent.ThreadLocalRandom;
-
-import static org.bukkit.ChatColor.DARK_AQUA;
-import static org.bukkit.ChatColor.GRAY;
 
 public class Roll extends BaseCommand {
 	private static final int BROADCAST_RADIUS = 20;
 	
-	public void invoke(Persona ps, @Default("20") @Arg("Dice")String rollString) {
+	public void invoke(Player ps, @Default("20") @Arg("Dice")String rollString) {
 		validate(rollString.matches("[0-9d+-]+"), "Could not understand the dice you're trying to roll");
 		String input = rollString;
 		rollString = rollString.replace("-", "+-");
