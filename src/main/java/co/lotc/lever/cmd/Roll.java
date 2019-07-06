@@ -82,7 +82,8 @@ public class Roll extends BaseCommand {
 	}
 	
 	private void validate(Integer i) {
-		validate(i!=null, "Number too high!");
+		validate(i!=null, "Number too high to be parsed.");
+		validate(Math.abs(i) < 10_000, "Number too high!");
 		validate(i != 0, "Number can not be 0");
 	}
 	
