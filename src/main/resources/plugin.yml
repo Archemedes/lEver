@@ -84,6 +84,8 @@ permissions:
     description: Vanish that can't be seen except by others with this node AND lever.vanish.cansee
   lever.vanish.admin:
     description: Vanish that can never be seen
+  lever.item.admin:
+    description: Create powerful items
   lever.fly.persist:  
     description: Fly persists through logouts and restarts
   lever.warpsign:
